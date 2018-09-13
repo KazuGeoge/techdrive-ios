@@ -1,0 +1,6 @@
+framework module Pods_RssTab {
+  umbrella header "Pods-RssTab-umbrella.h"
+
+  export *
+  module * { export * }
+}
