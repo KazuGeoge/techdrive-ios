@@ -8,15 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		8A78D7BB15B0CC3977B2AF1D /* Pods_RssTab.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BA70C910A188D2BB342FB7 /* Pods_RssTab.framework */; };
-		AF25E912214A470E004008EF /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF25E911214A470E004008EF /* Content.swift */; };
 		AF25E914214A4E3D004008EF /* BaseContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF25E913214A4E3D004008EF /* BaseContent.swift */; };
+		AF25E91B214E65D4004008EF /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF25E91A214E65D4004008EF /* Const.swift */; };
+		AF25E966214F99AD004008EF /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF25E964214F99AD004008EF /* TableViewController.swift */; };
 		AFA010902147C6EE005F298B /* TabsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA0108F2147C6EE005F298B /* TabsViewController.swift */; };
-		AFA010922147C70A005F298B /* Page1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA010912147C709005F298B /* Page1ViewController.swift */; };
-		AFA010942147C718005F298B /* Page2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA010932147C718005F298B /* Page2ViewController.swift */; };
-		AFA010962147FDD4005F298B /* Page3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA010952147FDD4005F298B /* Page3ViewController.swift */; };
-		AFA010982147FDDF005F298B /* Page4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA010972147FDDF005F298B /* Page4ViewController.swift */; };
-		AFA0109A2147FDEC005F298B /* Page5ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA010992147FDEC005F298B /* Page5ViewController.swift */; };
-		AFA0109C2147FDFA005F298B /* Page6ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA0109B2147FDFA005F298B /* Page6ViewController.swift */; };
+		AFA010922147C70A005F298B /* YahooTechArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA010912147C709005F298B /* YahooTechArticleViewController.swift */; };
+		AFA010942147C718005F298B /* QiitaArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA010932147C718005F298B /* QiitaArticleViewController.swift */; };
+		AFA010962147FDD4005F298B /* YahooInternationalArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA010952147FDD4005F298B /* YahooInternationalArticleViewController.swift */; };
+		AFA010982147FDDF005F298B /* YahooEconomyArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA010972147FDDF005F298B /* YahooEconomyArticleViewController.swift */; };
+		AFA0109A2147FDEC005F298B /* YahooEntaArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA010992147FDEC005F298B /* YahooEntaArticleViewController.swift */; };
+		AFA0109C2147FDFA005F298B /* YahooSportsArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA0109B2147FDFA005F298B /* YahooSportsArticleViewController.swift */; };
 		AFA0109E2148005F005F298B /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA0109D2148005E005F298B /* FeedItem.swift */; };
 		AFA010A02148EAC4005F298B /* WebViewDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA0109F2148EAC4005F298B /* WebViewDetailViewController.swift */; };
 		AFD10F90214796660053D001 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD10F8F214796660053D001 /* AppDelegate.swift */; };
@@ -46,15 +47,16 @@
 
 /* Begin PBXFileReference section */
 		6EFC647ACB69E07DDB5C7D82 /* Pods-RssTab.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RssTab.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RssTab/Pods-RssTab.debug.xcconfig"; sourceTree = "<group>"; };
-		AF25E911214A470E004008EF /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		AF25E913214A4E3D004008EF /* BaseContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseContent.swift; sourceTree = "<group>"; };
+		AF25E91A214E65D4004008EF /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		AF25E964214F99AD004008EF /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		AFA0108F2147C6EE005F298B /* TabsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsViewController.swift; sourceTree = "<group>"; };
-		AFA010912147C709005F298B /* Page1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page1ViewController.swift; sourceTree = "<group>"; };
-		AFA010932147C718005F298B /* Page2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page2ViewController.swift; sourceTree = "<group>"; };
-		AFA010952147FDD4005F298B /* Page3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page3ViewController.swift; sourceTree = "<group>"; };
-		AFA010972147FDDF005F298B /* Page4ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page4ViewController.swift; sourceTree = "<group>"; };
-		AFA010992147FDEC005F298B /* Page5ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page5ViewController.swift; sourceTree = "<group>"; };
-		AFA0109B2147FDFA005F298B /* Page6ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page6ViewController.swift; sourceTree = "<group>"; };
+		AFA010912147C709005F298B /* YahooTechArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YahooTechArticleViewController.swift; sourceTree = "<group>"; };
+		AFA010932147C718005F298B /* QiitaArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaArticleViewController.swift; sourceTree = "<group>"; };
+		AFA010952147FDD4005F298B /* YahooInternationalArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YahooInternationalArticleViewController.swift; sourceTree = "<group>"; };
+		AFA010972147FDDF005F298B /* YahooEconomyArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YahooEconomyArticleViewController.swift; sourceTree = "<group>"; };
+		AFA010992147FDEC005F298B /* YahooEntaArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YahooEntaArticleViewController.swift; sourceTree = "<group>"; };
+		AFA0109B2147FDFA005F298B /* YahooSportsArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YahooSportsArticleViewController.swift; sourceTree = "<group>"; };
 		AFA0109D2148005E005F298B /* FeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItem.swift; sourceTree = "<group>"; };
 		AFA0109F2148EAC4005F298B /* WebViewDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewDetailViewController.swift; sourceTree = "<group>"; };
 		AFD10F8C214796660053D001 /* RssTab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RssTab.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,7 +123,7 @@
 			children = (
 				AFA0109D2148005E005F298B /* FeedItem.swift */,
 				AF25E913214A4E3D004008EF /* BaseContent.swift */,
-				AF25E911214A470E004008EF /* Content.swift */,
+				AF25E91A214E65D4004008EF /* Const.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -130,15 +132,24 @@
 			isa = PBXGroup;
 			children = (
 				AFA0108F2147C6EE005F298B /* TabsViewController.swift */,
-				AFA010912147C709005F298B /* Page1ViewController.swift */,
-				AFA010932147C718005F298B /* Page2ViewController.swift */,
-				AFA010952147FDD4005F298B /* Page3ViewController.swift */,
-				AFA010972147FDDF005F298B /* Page4ViewController.swift */,
-				AFA010992147FDEC005F298B /* Page5ViewController.swift */,
-				AFA0109B2147FDFA005F298B /* Page6ViewController.swift */,
+				AFA010912147C709005F298B /* YahooTechArticleViewController.swift */,
+				AFA010932147C718005F298B /* QiitaArticleViewController.swift */,
+				AFA010952147FDD4005F298B /* YahooInternationalArticleViewController.swift */,
+				AFA010972147FDDF005F298B /* YahooEconomyArticleViewController.swift */,
+				AFA010992147FDEC005F298B /* YahooEntaArticleViewController.swift */,
+				AFA0109B2147FDFA005F298B /* YahooSportsArticleViewController.swift */,
 				AFA0109F2148EAC4005F298B /* WebViewDetailViewController.swift */,
+				AF25E917214E3DD1004008EF /* New Group */,
 			);
 			path = viewController;
+			sourceTree = "<group>";
+		};
+		AF25E917214E3DD1004008EF /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				AF25E964214F99AD004008EF /* TableViewController.swift */,
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		AFD10F83214796660053D001 = {
@@ -369,18 +380,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFA0109C2147FDFA005F298B /* Page6ViewController.swift in Sources */,
-				AFA010942147C718005F298B /* Page2ViewController.swift in Sources */,
-				AFA010982147FDDF005F298B /* Page4ViewController.swift in Sources */,
-				AF25E912214A470E004008EF /* Content.swift in Sources */,
+				AFA0109C2147FDFA005F298B /* YahooSportsArticleViewController.swift in Sources */,
+				AFA010942147C718005F298B /* QiitaArticleViewController.swift in Sources */,
+				AF25E966214F99AD004008EF /* TableViewController.swift in Sources */,
+				AFA010982147FDDF005F298B /* YahooEconomyArticleViewController.swift in Sources */,
 				AFA010A02148EAC4005F298B /* WebViewDetailViewController.swift in Sources */,
-				AFA010962147FDD4005F298B /* Page3ViewController.swift in Sources */,
-				AFA010922147C70A005F298B /* Page1ViewController.swift in Sources */,
-				AFA0109A2147FDEC005F298B /* Page5ViewController.swift in Sources */,
+				AFA010962147FDD4005F298B /* YahooInternationalArticleViewController.swift in Sources */,
+				AFA010922147C70A005F298B /* YahooTechArticleViewController.swift in Sources */,
+				AFA0109A2147FDEC005F298B /* YahooEntaArticleViewController.swift in Sources */,
 				AFD10F90214796660053D001 /* AppDelegate.swift in Sources */,
 				AFA0109E2148005F005F298B /* FeedItem.swift in Sources */,
 				AF25E914214A4E3D004008EF /* BaseContent.swift in Sources */,
 				AFA010902147C6EE005F298B /* TabsViewController.swift in Sources */,
+				AF25E91B214E65D4004008EF /* Const.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,7 +498,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -540,7 +552,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -675,7 +687,7 @@
 				AFD10FB3214796670053D001 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		AFD10FB4214796670053D001 /* Build configuration list for PBXNativeTarget "RssTab" */ = {
 			isa = XCConfigurationList;
@@ -684,7 +696,7 @@
 				AFD10FB6214796670053D001 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		AFD10FB7214796670053D001 /* Build configuration list for PBXNativeTarget "RssTabTests" */ = {
 			isa = XCConfigurationList;
@@ -693,7 +705,7 @@
 				AFD10FB9214796670053D001 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		AFD10FBA214796670053D001 /* Build configuration list for PBXNativeTarget "RssTabUITests" */ = {
 			isa = XCConfigurationList;
@@ -702,7 +714,7 @@
 				AFD10FBC214796670053D001 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

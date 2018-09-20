@@ -12,7 +12,6 @@ class WebViewDetailViewController: UIViewController ,UIWebViewDelegate {
 
     var webView : UIWebView = UIWebView()
     var webUrl: URL?
-    var content : Content? = nil
     var barTitle : String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,14 +28,12 @@ class WebViewDetailViewController: UIViewController ,UIWebViewDelegate {
         let urlRequest = URLRequest(url: url!)
         self.webView.loadRequest(urlRequest)
     }
+    
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         return true
     }
-     override func viewDidAppear(_ animated: Bool){
-        super.viewDidAppear(false)
-        
+    
+    func webView(webView: UIWebView!, shouldStartLoadWithRequest request: NSURLRequest!, navigationType: UIWebViewNavigationType) -> Bool {
+        return true
     }
-//    func webView(webView: UIWebView!, shouldStartLoadWithRequest request: NSURLRequest!, navigationType: UIWebViewNavigationType) -> Bool {
-//        return true
-//    }
 }

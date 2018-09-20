@@ -14,21 +14,22 @@ class TabsViewController: UITabBarController {
         super.viewDidLoad()
         
         // ViewControllerをインスタンス化
-        let firstVC = Page1ViewController()
-        let secondVC = Page2ViewController()
-        let thirdVC = Page3ViewController()
-        let forceVC = Page4ViewController()
-        let fifthVC = Page5ViewController()
-        let sixVC = Page6ViewController()
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let yahooTechVC = mainStoryboard.instantiateViewController(withIdentifier: "YahooTechArticle") as! YahooTechArticleViewController
+        let qiitaVC = mainStoryboard.instantiateViewController(withIdentifier: "QiitaArticle") as! QiitaArticleViewController
+        let yahooInternationalVC = mainStoryboard.instantiateViewController(withIdentifier: "YahooInternationalArticle") as! YahooInternationalArticleViewController
+        let yahooEconomyVC = mainStoryboard.instantiateViewController(withIdentifier: "YahooEconomyArticle") as! YahooEconomyArticleViewController
+        let yahooEntaVC = mainStoryboard.instantiateViewController(withIdentifier: "YahooEntaArticle") as! YahooEntaArticleViewController
+        let yahooSportsVC = mainStoryboard.instantiateViewController(withIdentifier: "YahooSportsArticle") as! YahooSportsArticleViewController
         
         //タイトルを設定
-        firstVC.tabBarItem.title = "IT 科学ニュース"
-        secondVC.tabBarItem.title = "キータ一覧"
-        thirdVC.tabBarItem.title = "国際ニュース"
-        forceVC.tabBarItem.title = "経済"
-        fifthVC.tabBarItem.title = "エンタメニュース"
-        sixVC.tabBarItem.title = "スポーツニュース"
-        let viewControllers = [firstVC, secondVC, thirdVC, forceVC, fifthVC, sixVC]
+        yahooTechVC.tabBarItem.title = "IT 科学ニュース"
+        qiitaVC.tabBarItem.title = "キータ一覧"
+        yahooInternationalVC.tabBarItem.title = "国際ニュース"
+        yahooEconomyVC.tabBarItem.title = "経済"
+        yahooEntaVC.tabBarItem.title = "エンタメニュース"
+        yahooSportsVC.tabBarItem.title = "スポーツニュース"
+        let viewControllers = [yahooTechVC, qiitaVC, yahooInternationalVC, yahooEconomyVC, yahooEntaVC, yahooSportsVC]
         // ページをセット
         self.setViewControllers(viewControllers, animated: false)
     }
