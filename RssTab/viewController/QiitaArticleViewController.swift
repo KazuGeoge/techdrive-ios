@@ -10,11 +10,11 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class QiitaArticleViewController: UIViewController {
+class QiitaArticleViewController: UIViewController, TableProtocol {
    
     @IBOutlet weak var tableView: UITableView!
     let sectionTitle: Array = ["キータ一覧"]
-    var tablePage = TableViewController()
+    var tablePage : TableViewDataSouce = TableViewDataSouce()
     var cellTitle : [String] = []
     var cellURL : [String] = []
     
@@ -22,6 +22,8 @@ class QiitaArticleViewController: UIViewController {
         super.viewDidLoad()
         configue()
         loadAPI()
+        
+        tablePage.delegate = self
     }
     
     func configue() {
@@ -47,6 +49,7 @@ class QiitaArticleViewController: UIViewController {
                         let url: String = ("\(json["url"])")
                         print("title:\(json["title"])")
                         print("Url:\(json["url"])")
+                        print("profile_image_url:\(json["profile_image_url"])")
                         self.cellTitle.append(title)
                         self.cellURL.append(url)
                     }
@@ -58,5 +61,9 @@ class QiitaArticleViewController: UIViewController {
                 print(error)
             }
         }
+    }
+    
+    func pushWebVC(webView: UIViewController) {
+        self.navigationController?.pushViewController(webView, animated: true)
     }
 }

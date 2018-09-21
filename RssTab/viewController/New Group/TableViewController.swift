@@ -8,29 +8,32 @@
 
 import UIKit
 
-class TableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+protocol TableProtocol : NSObjectProtocol {
+    func pushWebVC(webView: UIViewController)
+}
+
+class TableViewDataSouce: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     var sectionTitle: [String] = []
     var cellTitle : [String] = []
     var cellURL : [String] = []
     var feedItems = [FeedItem]()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-      
-    }
+    var delegate: TableProtocol?
     
      func numberOfSections(in tableView: UITableView) -> Int {
         return sectionTitle.count
     }
     
-     func tableView(_ tableView: UITableView,
-                            titleForHeaderInSection section: Int) -> String? {
+     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sectionTitle[section]
     }
     
-     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cellTitle.count
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        var cellCount: Int = 0
+        if section == 0 {
+            cellCount = cellTitle.count
+        }
+        return cellCount
     }
     
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -39,8 +42,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func feedItems(indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "cell")
-        
-        if cellTitle.count == 0 {
+        if indexPath.section == 0 {
         let feedItem = self.cellTitle[indexPath.row]
         cell.textLabel?.text = feedItem
         print("cellTitle:\(feedItem)")
@@ -55,8 +57,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         webViewDetailVC.webUrl = URL(string: feedItem)
         let title = feedItems(indexPath: indexPath)
         webViewDetailVC.barTitle = title.textLabel!.text!
-        self.navigationController?.pushViewController(webViewDetailVC, animated: true)
-        print("navigationController:\(String(describing: navigationController))")
+        delegate?.pushWebVC(webView: webViewDetailVC)
         print("記事URL:\(feedItem)")
     }
     

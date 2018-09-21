@@ -10,7 +10,7 @@ import UIKit
 
 class WebViewDetailViewController: UIViewController ,UIWebViewDelegate {
 
-    var webView : UIWebView = UIWebView()
+    @IBOutlet var webView: UIWebView!
     var webUrl: URL?
     var barTitle : String = ""
     override func viewDidLoad() {
@@ -21,7 +21,6 @@ class WebViewDetailViewController: UIViewController ,UIWebViewDelegate {
         title.text = barTitle
         self.navigationItem.titleView = title
        
-        webView = UIWebView(frame : self.view.bounds)
         webView.delegate = self
         self.view.addSubview(webView)
         let url = webUrl

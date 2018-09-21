@@ -8,7 +8,7 @@
 
 import UIKit
 
-class YahooTechArticleViewController: UIViewController, XMLParserDelegate  {
+class YahooTechArticleViewController: UIViewController, XMLParserDelegate, TableProtocol  {
     
     @IBOutlet weak var tableView: UITableView!
     let sectionTitle: Array = ["IT 科学"]
@@ -18,7 +18,7 @@ class YahooTechArticleViewController: UIViewController, XMLParserDelegate  {
     private let itemElementName = "item"
     private let titleElementName = "title"
     private let linkElementName = "link"
-    var tablePage : TableViewController = TableViewController()
+    var tablePage : TableViewDataSouce = TableViewDataSouce()
     var cellTitle : [String] = []
     var cellURL : [String] = []
    
@@ -26,6 +26,8 @@ class YahooTechArticleViewController: UIViewController, XMLParserDelegate  {
         super.viewDidLoad()
         parseXML()
         configureTable()
+        
+        tablePage.delegate = self
     }
     
     private func parseXML() {
@@ -73,6 +75,10 @@ class YahooTechArticleViewController: UIViewController, XMLParserDelegate  {
     
      func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         self.currentElementName = nil
+    }
+    
+    func pushWebVC(webView: UIViewController) {
+        self.navigationController?.pushViewController(webView, animated: true)
     }
 }
 
