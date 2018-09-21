@@ -78,22 +78,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="262-Lh-gXH">
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Ev-0L-TT3">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="edo-C8-ZxH">
+                                <rect key="frame" x="138" y="67" width="98" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="⭐️お気に入り"/>
+                                <connections>
+                                    <action selector="button:" destination="XzX-dQ-exl" eventType="touchUpInside" id="K4p-oG-K9K"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="262-Lh-gXH" firstAttribute="bottom" secondItem="Aod-En-SMg" secondAttribute="bottom" id="R7S-ak-1EV"/>
-                            <constraint firstItem="262-Lh-gXH" firstAttribute="trailing" secondItem="Aod-En-SMg" secondAttribute="trailing" id="RRS-RD-XyF"/>
-                            <constraint firstItem="262-Lh-gXH" firstAttribute="top" secondItem="3ts-6U-aV7" secondAttribute="top" id="bgw-8f-QqM"/>
-                            <constraint firstItem="262-Lh-gXH" firstAttribute="leading" secondItem="Aod-En-SMg" secondAttribute="leading" id="t80-Nh-Rda"/>
+                            <constraint firstItem="2Ev-0L-TT3" firstAttribute="trailing" secondItem="Aod-En-SMg" secondAttribute="trailing" id="Bzl-ir-6tL"/>
+                            <constraint firstItem="2Ev-0L-TT3" firstAttribute="bottom" secondItem="Aod-En-SMg" secondAttribute="bottom" id="Vec-RJ-KyC"/>
+                            <constraint firstItem="2Ev-0L-TT3" firstAttribute="leading" secondItem="Aod-En-SMg" secondAttribute="leading" id="epQ-TB-h2l"/>
+                            <constraint firstItem="2Ev-0L-TT3" firstAttribute="top" secondItem="3ts-6U-aV7" secondAttribute="top" id="r2f-2l-j5L"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Aod-En-SMg"/>
                     </view>
                     <connections>
-                        <outlet property="webView" destination="262-Lh-gXH" id="O6g-fT-Apn"/>
+                        <outlet property="webView" destination="2Ev-0L-TT3" id="ZP0-W3-C2j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y8b-yA-YUK" userLabel="First Responder" sceneMemberID="firstResponder"/>

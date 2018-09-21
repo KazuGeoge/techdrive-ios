@@ -37,7 +37,7 @@ class YahooSportsArticleViewController: UIViewController, XMLParserDelegate, Tab
     }
     
     private func configureTable(){
-        tablePage.sectionTitle = sectionTitle
+        tablePage.sectionTitle += sectionTitle
         tableView.delegate = self.tablePage
         tableView.dataSource = self.tablePage
         tableView.register(UITableViewCell.self, forCellReuseIdentifier:"cell")

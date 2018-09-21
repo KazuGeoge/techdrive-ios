@@ -8,10 +8,10 @@
 
 import UIKit
 
-class YahooTechArticleViewController: UIViewController, XMLParserDelegate, TableProtocol  {
+class YahooTechArticleViewController: UIViewController, XMLParserDelegate, TableProtocol, favProtocol  {
     
     @IBOutlet weak var tableView: UITableView!
-    let sectionTitle: Array = ["IT 科学"]
+    var sectionTitle: Array = ["IT 科学"]
     private let feedUrl = URL(string: Const.tech)
     private var feedItems = [FeedItem]()
     private var currentElementName : String?
@@ -30,6 +30,11 @@ class YahooTechArticleViewController: UIViewController, XMLParserDelegate, Table
         tablePage.delegate = self
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+         self.tableView.reloadData()
+    }
+    
     private func parseXML() {
         let parser: XMLParser! = XMLParser(contentsOf: feedUrl!)
         parser.delegate = self
@@ -37,10 +42,11 @@ class YahooTechArticleViewController: UIViewController, XMLParserDelegate, Table
     }
     
     private func configureTable(){
-        tablePage.sectionTitle = sectionTitle
+        tablePage.sectionTitle += sectionTitle
         tableView.delegate = self.tablePage
         tableView.dataSource = self.tablePage
         tableView.register(UITableViewCell.self, forCellReuseIdentifier:"cell")
+        view.addSubview(tableView)
     }
     
      func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
@@ -79,6 +85,17 @@ class YahooTechArticleViewController: UIViewController, XMLParserDelegate, Table
     
     func pushWebVC(webView: UIViewController) {
         self.navigationController?.pushViewController(webView, animated: true)
+        
+    }
+    
+    func addFavCell(titleCell: String, url: URL) {
+        print("titleCell:\(titleCell)")
+        print("url:\(url)")
+        tablePage.favCellTitle.append(titleCell)
+        tablePage.favCellURL.append(url)
+        
+        //ここでエラーになってしまいます
+        tableView.reloadData()
     }
 }
 

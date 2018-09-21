@@ -63,7 +63,7 @@ class YahooInternationalArticleViewController: UIViewController, XMLParserDelega
                 let tmpString = lastItem.title
                 lastItem.title = tmpString + string
                 cellTitle.append(lastItem.title)
-                tablePage.cellTitle = cellTitle
+                tablePage.cellTitle += cellTitle
             case linkElementName:
                 lastItem.url = string
                 cellURL.append(lastItem.url)

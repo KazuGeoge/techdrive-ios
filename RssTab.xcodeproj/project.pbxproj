@@ -276,13 +276,16 @@
 				TargetAttributes = {
 					AFD10F8B214796660053D001 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 					};
 					AFD10F9F214796670053D001 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 						TestTargetID = AFD10F8B214796660053D001;
 					};
 					AFD10FAA214796670053D001 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 						TestTargetID = AFD10F8B214796660053D001;
 					};
 				};
@@ -575,7 +578,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Geoge.RssTab;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -594,7 +597,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Geoge.RssTab;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -613,7 +616,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Geoge.RssTabTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RssTab.app/RssTab";
 			};
@@ -633,7 +636,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Geoge.RssTabTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RssTab.app/RssTab";
 			};
@@ -652,7 +655,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Geoge.RssTabUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = RssTab;
 			};
@@ -671,7 +674,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Geoge.RssTabUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = RssTab;
 			};

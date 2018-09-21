@@ -8,11 +8,17 @@
 
 import UIKit
 
+protocol favProtocol {
+    func addFavCell(titleCell: String, url: URL)
+}
+
 class WebViewDetailViewController: UIViewController ,UIWebViewDelegate {
 
-    @IBOutlet var webView: UIWebView!
+    @IBOutlet weak var webView: UIWebView!
     var webUrl: URL?
     var barTitle : String = ""
+    var webViewDelegate: favProtocol?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,19 +26,23 @@ class WebViewDetailViewController: UIViewController ,UIWebViewDelegate {
         title.textColor = UIColor.gray
         title.text = barTitle
         self.navigationItem.titleView = title
-       
+        
         webView.delegate = self
-        self.view.addSubview(webView)
         let url = webUrl
         let urlRequest = URLRequest(url: url!)
         self.webView.loadRequest(urlRequest)
     }
     
-    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+    @IBAction func button(_ sender: Any) {
+        webViewDelegate?.addFavCell(titleCell: barTitle, url: webUrl!)
+        print("お気に入りに追加")
+    }
+    
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
         return true
     }
     
-    func webView(webView: UIWebView!, shouldStartLoadWithRequest request: NSURLRequest!, navigationType: UIWebViewNavigationType) -> Bool {
+    func webView(webView: UIWebView!, shouldStartLoadWithRequest request: NSURLRequest!, navigationType: UIWebView.NavigationType) -> Bool {
         return true
     }
 }
