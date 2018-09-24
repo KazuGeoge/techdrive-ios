@@ -21,7 +21,8 @@ class YahooTechArticleViewController: UIViewController, XMLParserDelegate, Table
     var tablePage : TableViewDataSouce = TableViewDataSouce()
     var cellTitle : [String] = []
     var cellURL : [String] = []
-   
+    var judjeTilte : Bool? = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         parseXML()
@@ -66,15 +67,33 @@ class YahooTechArticleViewController: UIViewController, XMLParserDelegate, Table
             var lastItem = self.feedItems[self.feedItems.count - 1]
             
             switch self.currentElementName {
+                
             case titleElementName:
-                let tmpString = lastItem.title
-                lastItem.title = tmpString + string
-                cellTitle.append(lastItem.title)
-                tablePage.cellTitle = cellTitle
+                if judjeTilte == true {
+                    let tmpString = lastItem.title
+                    lastItem.title = tmpString + string
+                    cellTitle.append(lastItem.title)
+                    tablePage.cellTitle = cellTitle
+                    print("firstCellTitle:\(lastItem.title)")
+                    judjeTilte = false
+                } else {
+                    let tmpString = lastItem.title
+                    lastItem.title = tmpString + string
+                    let lastCelltitle = cellTitle.last!
+                    let BondCellTitle = lastCelltitle + lastItem.title
+                    cellTitle.removeLast()
+                    cellTitle.append(BondCellTitle)
+                    tablePage.cellTitle = cellTitle
+                }
+                
             case linkElementName:
-                lastItem.url = string
-                cellURL.append(lastItem.url)
-                tablePage.cellURL = cellURL
+                if judjeTilte == false {
+                    lastItem.url = string
+                    cellURL.append(lastItem.url)
+                    tablePage.cellURL = cellURL
+                    print("firstCellURL:\(lastItem.url)")
+                    judjeTilte = true
+                }
             default: break
             }
         }
@@ -86,16 +105,29 @@ class YahooTechArticleViewController: UIViewController, XMLParserDelegate, Table
     
     func pushWebVC(webView: UIViewController) {
         self.navigationController?.pushViewController(webView, animated: true)
-        
     }
     
     func addFavCell(titleCell: String, url: URL) {
-        print("titleCell:\(titleCell)")
-        print("url:\(url)")
+        var newCellTitle: [String] = []
+        var newCellURL: [String] = []
+        
         tablePage.favCellTitle.append(titleCell)
         tablePage.favCellURL.append(url)
+
+        for title in tablePage.cellTitle {
+            if title != titleCell {
+                newCellTitle.append(title)
+            }
+        }
+        tablePage.cellTitle = newCellTitle
         
-        //ここでエラーになってしまいます
+        for URL1 in tablePage.cellURL {
+            let stringURL = URL(string: URL1)
+            if url != stringURL {
+                newCellURL.append(URL1)
+            }
+        }
+        tablePage.cellURL = newCellURL
         tableView.reloadData()
     }
 }

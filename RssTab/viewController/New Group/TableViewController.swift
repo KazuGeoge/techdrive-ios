@@ -51,8 +51,8 @@ class TableViewDataSouce: NSObject, UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == 0 {
             let feedItem = self.favCellTitle[indexPath.row]
             cell.textLabel?.text = feedItem
-            cell.textLabel?.text = feedItem
             return cell
+            
         } else if indexPath.section == 1 {
             let feedItem = self.cellTitle[indexPath.row]
             cell.textLabel?.text = feedItem
