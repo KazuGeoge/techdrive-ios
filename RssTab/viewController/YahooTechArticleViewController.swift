@@ -28,6 +28,7 @@ class YahooTechArticleViewController: UIViewController, XMLParserDelegate, Table
         configureTable()
         
         tablePage.delegate = self
+        tablePage.favDelegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -79,7 +80,7 @@ class YahooTechArticleViewController: UIViewController, XMLParserDelegate, Table
         }
     }
     
-     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         self.currentElementName = nil
     }
     
@@ -98,4 +99,3 @@ class YahooTechArticleViewController: UIViewController, XMLParserDelegate, Table
         tableView.reloadData()
     }
 }
-

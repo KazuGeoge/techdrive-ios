@@ -19,6 +19,7 @@ class TableViewDataSouce: NSObject, UITableViewDataSource, UITableViewDelegate {
     var cellURL : [String] = []
     var feedItems = [FeedItem]()
     var delegate: TableProtocol?
+    var favDelegate: favProtocol?
     var favCellTitle : [String] = []
     var favCellURL : [URL] = []
     
@@ -73,13 +74,11 @@ class TableViewDataSouce: NSObject, UITableViewDataSource, UITableViewDelegate {
             delegate?.pushWebVC(webView: webViewDetailVC)
             
         } else if indexPath.section == 1 {
-            let tech = mainStoryboard.instantiateViewController(withIdentifier: "YahooTechArticle") as! YahooTechArticleViewController
             let feedItem = self.cellURL[indexPath.row]
             webViewDetailVC.webUrl = URL(string: feedItem)
             let title = feedItems(indexPath: indexPath)
             webViewDetailVC.barTitle = title.textLabel!.text!
-            //デリゲート先をtechVCに設定
-            webViewDetailVC.webViewDelegate = tech
+            webViewDetailVC.webViewDelegate = favDelegate
             delegate?.pushWebVC(webView: webViewDetailVC)
             print("記事URL:\(feedItem)")
         }
