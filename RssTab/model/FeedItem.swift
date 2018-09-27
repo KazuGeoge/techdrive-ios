@@ -7,10 +7,10 @@
 
 struct FeedItem {
     var title: String
-    var url: String
+    var link: String
     
     init(){
         self.title = ""
-        self.url = ""
+        self.link = ""
     }
 }

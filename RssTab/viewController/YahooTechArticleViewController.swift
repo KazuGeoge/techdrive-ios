@@ -8,126 +8,67 @@
 
 import UIKit
 
-class YahooTechArticleViewController: UIViewController, XMLParserDelegate, TableProtocol, favProtocol  {
-    
+
+class YahooTechArticleViewController: UIViewController, TableProtocol, FavProtocol, ParseXML {
+
     @IBOutlet weak var tableView: UITableView!
-    var sectionTitle: Array = ["IT 科学"]
-    private let feedUrl = URL(string: Const.tech)
-    private var feedItems = [FeedItem]()
-    private var currentElementName : String?
-    private let itemElementName = "item"
-    private let titleElementName = "title"
-    private let linkElementName = "link"
-    var tablePage : TableViewDataSouce = TableViewDataSouce()
-    var cellTitle : [String] = []
-    var cellURL : [String] = []
-    var judjeTilte : Bool? = true
+    let sectionTitle = ["IT 科学"]
+    private let feedURL = URL(string: Const.TECH)
+    var tableViewDataSouce: TableViewDataSouce = TableViewDataSouce()
+    var readXML: ReadXML = ReadXML()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableViewDataSouce.sectionTitle += sectionTitle
         parseXML()
-        configureTable()
-        
-        tablePage.delegate = self
-        tablePage.favDelegate = self
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-         self.tableView.reloadData()
     }
     
     private func parseXML() {
-        let parser: XMLParser! = XMLParser(contentsOf: feedUrl!)
-        parser.delegate = self
+        readXML.XMLdelegate = self
+        let parser: XMLParser! = XMLParser(contentsOf: feedURL!)
+        parser.delegate = self.readXML
         print("parse:\(parser.parse())")
     }
-    
-    private func configureTable(){
-        tablePage.sectionTitle += sectionTitle
-        tableView.delegate = self.tablePage
-        tableView.dataSource = self.tablePage
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier:"cell")
-        view.addSubview(tableView)
-    }
-    
-     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
-        self.currentElementName = nil
-        
-        if elementName == itemElementName {
-            self.feedItems.append(FeedItem())
-        } else {
-            currentElementName = elementName
-        }
-    }
-    
-     func parser(_ parser: XMLParser, foundCharacters string: String) {
-        
-        if self.feedItems.count > 0 {
-            var lastItem = self.feedItems[self.feedItems.count - 1]
-            
-            switch self.currentElementName {
-                
-            case titleElementName:
-                if judjeTilte == true {
-                    let tmpString = lastItem.title
-                    lastItem.title = tmpString + string
-                    cellTitle.append(lastItem.title)
-                    tablePage.cellTitle = cellTitle
-                    print("firstCellTitle:\(lastItem.title)")
-                    judjeTilte = false
-                } else {
-                    let tmpString = lastItem.title
-                    lastItem.title = tmpString + string
-                    let lastCelltitle = cellTitle.last!
-                    let BondCellTitle = lastCelltitle + lastItem.title
-                    cellTitle.removeLast()
-                    cellTitle.append(BondCellTitle)
-                    tablePage.cellTitle = cellTitle
-                }
-                
-            case linkElementName:
-                if judjeTilte == false {
-                    lastItem.url = string
-                    cellURL.append(lastItem.url)
-                    tablePage.cellURL = cellURL
-                    print("firstCellURL:\(lastItem.url)")
-                    judjeTilte = true
-                }
-            default: break
-            }
-        }
-    }
-    
-    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-        self.currentElementName = nil
+
+    func parse(parsedCellTitle: [String], parsedCellURL: [String]) {
+        tableViewDataSouce.cellTitle = parsedCellTitle
+        tableViewDataSouce.cellLink = parsedCellURL
+        configureTableView()
     }
     
     func pushWebVC(webView: UIViewController) {
         self.navigationController?.pushViewController(webView, animated: true)
     }
     
-    func addFavCell(titleCell: String, url: URL) {
-        var newCellTitle: [String] = []
-        var newCellURL: [String] = []
+    private func configureTableView(){
+        tableViewDataSouce.delegate = self
+        tableViewDataSouce.favDelegate = self
+        tableView.delegate = self.tableViewDataSouce
+        tableView.dataSource = self.tableViewDataSouce
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier:"cell")
+        view.addSubview(tableView)
+    }
+    
+    func addFavCell(titleCell: String, webURL: URL) {
+        var sortedCellTitle: [String] = []
+        var sortedCellLink: [String] = []
+        tableViewDataSouce.favCellTitle.append(titleCell)
+        tableViewDataSouce.favCellURL.append(webURL)
         
-        tablePage.favCellTitle.append(titleCell)
-        tablePage.favCellURL.append(url)
-
-        for title in tablePage.cellTitle {
+        for title in tableViewDataSouce.cellTitle {
             if title != titleCell {
-                newCellTitle.append(title)
+                sortedCellTitle.append(title)
             }
         }
-        tablePage.cellTitle = newCellTitle
         
-        for URL1 in tablePage.cellURL {
-            let stringURL = URL(string: URL1)
-            if url != stringURL {
-                newCellURL.append(URL1)
+        for link in tableViewDataSouce.cellLink {
+            let convertURL = URL(string: link)
+            if webURL != convertURL {
+                sortedCellLink.append(link)
             }
         }
-        tablePage.cellURL = newCellURL
+        tableViewDataSouce.cellTitle = sortedCellTitle
+        tableViewDataSouce.cellLink = sortedCellLink
         tableView.reloadData()
     }
 }

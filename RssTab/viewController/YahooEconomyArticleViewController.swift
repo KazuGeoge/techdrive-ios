@@ -8,77 +8,67 @@
 
 import UIKit
 
-class YahooEconomyArticleViewController: UIViewController, XMLParserDelegate, TableProtocol {
+class YahooEconomyArticleViewController: UIViewController, XMLParserDelegate, TableProtocol, FavProtocol, ParseXML {
 
     @IBOutlet weak var tableView: UITableView!
-    let sectionTitle: Array = ["経済"]
-    private let feedUrl = URL(string: Const.economy)
-    private var feedItems = [FeedItem]()
-    private var currentElementName : String?
-    private let itemElementName = "item"
-    private let titleElementName = "title"
-    private let linkElementName = "link"
-    var tablePage : TableViewDataSouce = TableViewDataSouce()
-    var cellTitle : [String] = []
-    var cellURL : [String] = []
-   
+    let sectionTitle = ["経済"]
+    private let feedURL = URL(string: Const.ECONOMY)
+    var tableViewDataSouce: TableViewDataSouce = TableViewDataSouce()
+    var readXML: ReadXML = ReadXML()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableViewDataSouce.sectionTitle += sectionTitle
         parseXML()
-        configureTable()
-        
-        tablePage.delegate = self
     }
     
     private func parseXML() {
-        let parser: XMLParser! = XMLParser(contentsOf: feedUrl!)
-        parser.delegate = self
+        readXML.XMLdelegate = self
+        let parser: XMLParser! = XMLParser(contentsOf: feedURL!)
+        parser.delegate = self.readXML
         print("parse:\(parser.parse())")
     }
     
-    private func configureTable(){
-        tablePage.sectionTitle += sectionTitle
-        tableView.delegate = self.tablePage
-        tableView.dataSource = self.tablePage
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier:"cell")
-    }
-    
-    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
-        self.currentElementName = nil
-        
-        if elementName == itemElementName {
-            self.feedItems.append(FeedItem())
-        } else {
-            currentElementName = elementName
-        }
-    }
-    
-    func parser(_ parser: XMLParser, foundCharacters string: String) {
-        
-        if self.feedItems.count > 0 {
-            var lastItem = self.feedItems[self.feedItems.count - 1]
-            
-            switch self.currentElementName {
-            case titleElementName:
-                let tmpString = lastItem.title
-                lastItem.title = tmpString + string
-                cellTitle.append(lastItem.title)
-                tablePage.cellTitle = cellTitle
-            case linkElementName:
-                lastItem.url = string
-                cellURL.append(lastItem.url)
-                tablePage.cellURL = cellURL
-            default: break
-            }
-        }
-    }
-    
-    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-        self.currentElementName = nil
+    func parse(parsedCellTitle: [String], parsedCellURL: [String]) {
+        tableViewDataSouce.cellTitle = parsedCellTitle
+        tableViewDataSouce.cellLink = parsedCellURL
+        configureTableView()
     }
     
     func pushWebVC(webView: UIViewController) {
         self.navigationController?.pushViewController(webView, animated: true)
+    }
+    
+    private func configureTableView(){
+        tableViewDataSouce.delegate = self
+        tableViewDataSouce.favDelegate = self
+        tableView.delegate = self.tableViewDataSouce
+        tableView.dataSource = self.tableViewDataSouce
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier:"cell")
+        view.addSubview(tableView)
+    }
+    
+    func addFavCell(titleCell: String, webURL: URL) {
+        var sortedCellTitle: [String] = []
+        var sortedCellLink: [String] = []
+        tableViewDataSouce.favCellTitle.append(titleCell)
+        tableViewDataSouce.favCellURL.append(webURL)
+        
+        for title in tableViewDataSouce.cellTitle {
+            if title != titleCell {
+                sortedCellTitle.append(title)
+            }
+        }
+        
+        for link in tableViewDataSouce.cellLink {
+            let convertURL = URL(string: link)
+            if webURL != convertURL {
+                sortedCellLink.append(link)
+            }
+        }
+        tableViewDataSouce.cellTitle = sortedCellTitle
+        tableViewDataSouce.cellLink = sortedCellLink
+        tableView.reloadData()
     }
 }
 

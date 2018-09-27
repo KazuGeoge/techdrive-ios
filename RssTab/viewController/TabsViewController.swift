@@ -17,7 +17,7 @@ class TabsViewController: UITabBarController {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let yahooTechVC = mainStoryboard.instantiateViewController(withIdentifier: "YahooTechArticle") as! YahooTechArticleViewController
         let qiitaVC = mainStoryboard.instantiateViewController(withIdentifier: "QiitaArticle") as! QiitaArticleViewController
-        let yahooInternationalVC = mainStoryboard.instantiateViewController(withIdentifier: "YahooInternationalArticle") as! YahooInternationalArticleViewController
+        let qiitaCollectionVC = mainStoryboard.instantiateViewController(withIdentifier: "QiitaArticleCollection") as! QiitaArticleCollectionViewController
         let yahooEconomyVC = mainStoryboard.instantiateViewController(withIdentifier: "YahooEconomyArticle") as! YahooEconomyArticleViewController
         let yahooEntaVC = mainStoryboard.instantiateViewController(withIdentifier: "YahooEntaArticle") as! YahooEntaArticleViewController
         let yahooSportsVC = mainStoryboard.instantiateViewController(withIdentifier: "YahooSportsArticle") as! YahooSportsArticleViewController
@@ -25,11 +25,11 @@ class TabsViewController: UITabBarController {
         //タイトルを設定
         yahooTechVC.tabBarItem.title = "IT 科学ニュース"
         qiitaVC.tabBarItem.title = "キータ一覧"
-        yahooInternationalVC.tabBarItem.title = "国際ニュース"
+        qiitaCollectionVC.tabBarItem.title = "国際ニュース"
         yahooEconomyVC.tabBarItem.title = "経済"
         yahooEntaVC.tabBarItem.title = "エンタメニュース"
         yahooSportsVC.tabBarItem.title = "スポーツニュース"
-        let viewControllers = [yahooTechVC, qiitaVC, yahooInternationalVC, yahooEconomyVC, yahooEntaVC, yahooSportsVC]
+        let viewControllers = [yahooTechVC, qiitaVC, qiitaCollectionVC, yahooEconomyVC, yahooEntaVC, yahooSportsVC]
         // ページをセット
         self.setViewControllers(viewControllers, animated: false)
     }

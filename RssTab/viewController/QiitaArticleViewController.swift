@@ -10,34 +10,33 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class QiitaArticleViewController: UIViewController, TableProtocol {
-   
+class QiitaArticleViewController: UIViewController, TableProtocol, FavProtocol {
+    
     @IBOutlet weak var tableView: UITableView!
     let sectionTitle: Array = ["キータ一覧"]
-    var tablePage : TableViewDataSouce = TableViewDataSouce()
-    var cellTitle : [String] = []
-    var cellURL : [String] = []
+    var tableViewDataSouce: TableViewDataSouce = TableViewDataSouce()
+    var contentList: [BaseContent] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configue()
+        configureTableView()
         loadAPI()
-        
-        tablePage.delegate = self
+        tableViewDataSouce.delegate = self
+        tableViewDataSouce.favDelegate = self
     }
     
-    func configue() {
+    private func configureTableView() {
         tableView.frame = view.frame
-        tablePage.sectionTitle += sectionTitle
-        tableView.delegate = self.tablePage
-        tableView.dataSource = self.tablePage
+        tableViewDataSouce.sectionTitle += sectionTitle
+        tableView.delegate = self.tableViewDataSouce
+        tableView.dataSource = self.tableViewDataSouce
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         view.addSubview(tableView)
     }
     
-    func loadAPI() {
-        let url:String = Const.qiita
-        Alamofire.request(url, method: .get, encoding: JSONEncoding.default).responseJSON{ response in
+    private func loadAPI() {
+        let URL:String = Const.QIITA
+        Alamofire.request(URL, method: .get, encoding: JSONEncoding.default).responseJSON{ response in
             
             switch response.result {
             case .success:
@@ -45,25 +44,45 @@ class QiitaArticleViewController: UIViewController, TableProtocol {
                 if let value = response.result.value {
                     let json = JSON(value)
                     json.forEach { (_, json) in
-                        let title: String = ("\(json["title"])")
-                        let url: String = ("\(json["url"])")
-                        print("title:\(json["title"])")
-                        print("Url:\(json["url"])")
-                        print("profile_image_url:\(json["profile_image_url"])")
-                        self.cellTitle.append(title)
-                        self.cellURL.append(url)
+                        let content = BaseContent(json: json)
+                        self.contentList.append(content)
+                        
+                         self.tableViewDataSouce.cellTitle.append(content.title)
+                         self.tableViewDataSouce.cellLink.append(content.link)
+                         self.tableViewDataSouce.imageLink.append(content.image)
                     }
-                    self.tablePage.cellTitle = self.cellTitle
-                    self.tablePage.cellURL = self.cellURL
-                    self.tableView.reloadData()
                 }
             case .failure(let error):
                 print(error)
             }
+             self.tableView.reloadData()
         }
     }
     
     func pushWebVC(webView: UIViewController) {
         self.navigationController?.pushViewController(webView, animated: true)
+    }
+    
+    func addFavCell(titleCell: String, webURL: URL) {
+        var sortedCellTitle: [String] = []
+        var sortedCellLink: [String] = []
+        tableViewDataSouce.favCellTitle.append(titleCell)
+        tableViewDataSouce.favCellURL.append(webURL)
+        
+        for title in tableViewDataSouce.cellTitle {
+            if title != titleCell {
+                sortedCellTitle.append(title)
+            }
+        }
+        
+        for link in tableViewDataSouce.cellLink {
+            let convertURL = URL(string: link)
+            if webURL != convertURL {
+                sortedCellLink.append(link)
+            }
+        }
+        tableViewDataSouce.cellTitle = sortedCellTitle
+        tableViewDataSouce.cellLink = sortedCellLink
+        tableView.reloadData()
     }
 }

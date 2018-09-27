@@ -15,14 +15,16 @@ protocol TableProtocol : NSObjectProtocol {
 class TableViewDataSouce: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     var sectionTitle: [String] = ["お気に入り"]
-    var cellTitle : [String] = []
-    var cellURL : [String] = []
-    var feedItems = [FeedItem]()
+    var feedItems: [FeedItem] = []
     var delegate: TableProtocol?
-    var favDelegate: favProtocol?
-    var favCellTitle : [String] = []
-    var favCellURL : [URL] = []
-    
+    var favDelegate: FavProtocol?
+    var cellTitle: [String] = []
+    var cellLink: [String] = []
+    var imageLink: [String] = []
+    var favCellTitle: [String] = []
+    var favCellURL: [URL] = []
+    var contentList: [BaseContent] = []
+   
      func numberOfSections(in tableView: UITableView) -> Int {
         return sectionTitle.count
     }
@@ -32,7 +34,7 @@ class TableViewDataSouce: NSObject, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var cellCount: Int = 0
+        var cellCount = 0
         if section == 0 {
             cellCount += favCellTitle.count
         } else if section == 1 {
@@ -64,26 +66,26 @@ class TableViewDataSouce: NSObject, UITableViewDataSource, UITableViewDelegate {
     
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let webViewDetailVC = mainStoryboard.instantiateViewController(withIdentifier: "WebViewDetailView") as! WebViewDetailViewController
-        
+        if let webViewDetailVC = mainStoryboard.instantiateViewController(withIdentifier: "WebViewDetailView") as? WebViewDetailViewController {
+            
         if indexPath.section == 0 {
             let feedItem = self.favCellURL[indexPath.row]
-            webViewDetailVC.webUrl = feedItem
-            let title = feedItems(indexPath: indexPath)
-            webViewDetailVC.barTitle = title.textLabel!.text!
+            webViewDetailVC.webURL = feedItem
+            let title = self.favCellTitle[indexPath.row]
+            webViewDetailVC.barTitle = title
             delegate?.pushWebVC(webView: webViewDetailVC)
             
         } else if indexPath.section == 1 {
-            let feedItem = self.cellURL[indexPath.row]
-            webViewDetailVC.webUrl = URL(string: feedItem)
-            let title = feedItems(indexPath: indexPath)
-            webViewDetailVC.barTitle = title.textLabel!.text!
+            let feedItem = self.cellLink[indexPath.row]
+            webViewDetailVC.webURL = URL(string: feedItem)
+            let title = self.cellTitle[indexPath.row]
+            webViewDetailVC.barTitle = title
             webViewDetailVC.webViewDelegate = favDelegate
             delegate?.pushWebVC(webView: webViewDetailVC)
             print("記事URL:\(feedItem)")
+            }
         }
     }
-    
      func tableView(_ table: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70.0
     }
