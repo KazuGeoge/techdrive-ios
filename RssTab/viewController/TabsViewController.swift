@@ -15,22 +15,38 @@ class TabsViewController: UITabBarController {
         
         // ViewControllerをインスタンス化
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let yahooTechVC = mainStoryboard.instantiateViewController(withIdentifier: "YahooTechArticle") as! YahooTechArticleViewController
-        let qiitaVC = mainStoryboard.instantiateViewController(withIdentifier: "QiitaArticle") as! QiitaArticleViewController
-        let qiitaCollectionVC = mainStoryboard.instantiateViewController(withIdentifier: "QiitaArticleCollection") as! QiitaArticleCollectionViewController
-        let yahooEconomyVC = mainStoryboard.instantiateViewController(withIdentifier: "YahooEconomyArticle") as! YahooEconomyArticleViewController
-        let yahooEntaVC = mainStoryboard.instantiateViewController(withIdentifier: "YahooEntaArticle") as! YahooEntaArticleViewController
-        let yahooSportsVC = mainStoryboard.instantiateViewController(withIdentifier: "YahooSportsArticle") as! YahooSportsArticleViewController
         
-        //タイトルを設定
-        yahooTechVC.tabBarItem.title = "IT 科学ニュース"
-        qiitaVC.tabBarItem.title = "キータ一覧"
-        qiitaCollectionVC.tabBarItem.title = "国際ニュース"
-        yahooEconomyVC.tabBarItem.title = "経済"
-        yahooEntaVC.tabBarItem.title = "エンタメニュース"
-        yahooSportsVC.tabBarItem.title = "スポーツニュース"
-        let viewControllers = [yahooTechVC, qiitaVC, qiitaCollectionVC, yahooEconomyVC, yahooEntaVC, yahooSportsVC]
-        // ページをセット
-        self.setViewControllers(viewControllers, animated: false)
+        if let yahooTechVC = mainStoryboard.instantiateViewController(withIdentifier: "ArticleView") as? ArticleViewController {
+            yahooTechVC.sectionTitle = ["IT 科学"]
+            yahooTechVC.feedURL = URL(string: Const.TECH)
+            yahooTechVC.isXML = true
+        
+            if let qiitaVC = mainStoryboard.instantiateViewController(withIdentifier: "ArticleView") as? ArticleViewController {
+                qiitaVC.sectionTitle = ["キータ一覧"]
+                qiitaVC.feedLink = Const.QIITA
+        
+                if let yahooInternational = mainStoryboard.instantiateViewController(withIdentifier: "ArticleView") as? ArticleViewController {
+                    yahooInternational.sectionTitle = ["国際ニュース"]
+                    yahooInternational.feedURL = URL(string: Const.INTERNATIONAL)
+                    yahooInternational.isXML = true
+        
+                    if let yahooEconomyVC = mainStoryboard.instantiateViewController(withIdentifier: "ArticleView") as? ArticleViewController {
+                        yahooEconomyVC.sectionTitle = ["経済ニュース"]
+                        yahooEconomyVC.feedURL = URL(string: Const.ECONOMY)
+                        yahooEconomyVC.isXML = true
+        
+                        //タイトルを設定
+                        yahooTechVC.tabBarItem.title = "IT 科学ニュース"
+                        qiitaVC.tabBarItem.title = "キータ一覧"
+                        yahooInternational.tabBarItem.title = "国際ニュース"
+                        yahooEconomyVC.tabBarItem.title = "経済ニュース"
+                        
+                        let viewControllers = [yahooTechVC, qiitaVC, yahooInternational, yahooEconomyVC]
+                        // ページをセット
+                        self.setViewControllers(viewControllers, animated: false)
+                    }
+                }
+            }
+        }
     }
 }

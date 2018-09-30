@@ -8,15 +8,15 @@
 
 import UIKit
 
-protocol TableProtocol : NSObjectProtocol {
-    func pushWebVC(webView: UIViewController)
+protocol TableProtocol: NSObjectProtocol {
+    func pushWebView(webView: UIViewController)
 }
 
 class TableViewDataSouce: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     var sectionTitle: [String] = ["お気に入り"]
     var feedItems: [FeedItem] = []
-    var delegate: TableProtocol?
+    var tableDelegate: TableProtocol?
     var favDelegate: FavProtocol?
     var cellTitle: [String] = []
     var cellLink: [String] = []
@@ -35,11 +35,13 @@ class TableViewDataSouce: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var cellCount = 0
+        
         if section == 0 {
             cellCount += favCellTitle.count
         } else if section == 1 {
             cellCount += cellTitle.count
         }
+        
         return cellCount
     }
     
@@ -73,7 +75,7 @@ class TableViewDataSouce: NSObject, UITableViewDataSource, UITableViewDelegate {
             webViewDetailVC.webURL = feedItem
             let title = self.favCellTitle[indexPath.row]
             webViewDetailVC.barTitle = title
-            delegate?.pushWebVC(webView: webViewDetailVC)
+            tableDelegate?.pushWebView(webView: webViewDetailVC)
             
         } else if indexPath.section == 1 {
             let feedItem = self.cellLink[indexPath.row]
@@ -81,12 +83,13 @@ class TableViewDataSouce: NSObject, UITableViewDataSource, UITableViewDelegate {
             let title = self.cellTitle[indexPath.row]
             webViewDetailVC.barTitle = title
             webViewDetailVC.webViewDelegate = favDelegate
-            delegate?.pushWebVC(webView: webViewDetailVC)
+            tableDelegate?.pushWebView(webView: webViewDetailVC)
             print("記事URL:\(feedItem)")
             }
         }
     }
+    
      func tableView(_ table: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70.0
+        return 70
     }
 }

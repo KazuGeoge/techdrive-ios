@@ -8,17 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		8A78D7BB15B0CC3977B2AF1D /* Pods_RssTab.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BA70C910A188D2BB342FB7 /* Pods_RssTab.framework */; };
+		AF098E48215D00E400ECD202 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF098E47215D00E400ECD202 /* ArticleViewController.swift */; };
+		AF098E4A215DD32D00ECD202 /* ReadJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF098E49215DD32D00ECD202 /* ReadJson.swift */; };
+		AF098E4C215E32CF00ECD202 /* QiitaArticleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF098E4B215E32CE00ECD202 /* QiitaArticleCollectionViewController.swift */; };
 		AF25E914214A4E3D004008EF /* BaseContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF25E913214A4E3D004008EF /* BaseContent.swift */; };
 		AF25E91B214E65D4004008EF /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF25E91A214E65D4004008EF /* Const.swift */; };
 		AF25E966214F99AD004008EF /* TableViewDataSouce.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF25E964214F99AD004008EF /* TableViewDataSouce.swift */; };
 		AF270613215903DE00017915 /* ReadXML.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF270612215903DE00017915 /* ReadXML.swift */; };
 		AFA010902147C6EE005F298B /* TabsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA0108F2147C6EE005F298B /* TabsViewController.swift */; };
-		AFA010922147C70A005F298B /* YahooTechArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA010912147C709005F298B /* YahooTechArticleViewController.swift */; };
-		AFA010942147C718005F298B /* QiitaArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA010932147C718005F298B /* QiitaArticleViewController.swift */; };
-		AFA010962147FDD4005F298B /* QiitaArticleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA010952147FDD4005F298B /* QiitaArticleCollectionViewController.swift */; };
-		AFA010982147FDDF005F298B /* YahooEconomyArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA010972147FDDF005F298B /* YahooEconomyArticleViewController.swift */; };
-		AFA0109A2147FDEC005F298B /* YahooEntaArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA010992147FDEC005F298B /* YahooEntaArticleViewController.swift */; };
-		AFA0109C2147FDFA005F298B /* YahooSportsArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA0109B2147FDFA005F298B /* YahooSportsArticleViewController.swift */; };
 		AFA0109E2148005F005F298B /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA0109D2148005E005F298B /* FeedItem.swift */; };
 		AFA010A02148EAC4005F298B /* WebViewDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA0109F2148EAC4005F298B /* WebViewDetailViewController.swift */; };
 		AFADCCCE215B8F7E008B0FF2 /* CollectionViewDataSouce.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFADCCCD215B8F7E008B0FF2 /* CollectionViewDataSouce.swift */; };
@@ -49,17 +46,14 @@
 
 /* Begin PBXFileReference section */
 		6EFC647ACB69E07DDB5C7D82 /* Pods-RssTab.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RssTab.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RssTab/Pods-RssTab.debug.xcconfig"; sourceTree = "<group>"; };
+		AF098E47215D00E400ECD202 /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
+		AF098E49215DD32D00ECD202 /* ReadJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadJson.swift; sourceTree = "<group>"; };
+		AF098E4B215E32CE00ECD202 /* QiitaArticleCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiitaArticleCollectionViewController.swift; sourceTree = "<group>"; };
 		AF25E913214A4E3D004008EF /* BaseContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseContent.swift; sourceTree = "<group>"; };
 		AF25E91A214E65D4004008EF /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		AF25E964214F99AD004008EF /* TableViewDataSouce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSouce.swift; sourceTree = "<group>"; };
 		AF270612215903DE00017915 /* ReadXML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadXML.swift; sourceTree = "<group>"; };
 		AFA0108F2147C6EE005F298B /* TabsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsViewController.swift; sourceTree = "<group>"; };
-		AFA010912147C709005F298B /* YahooTechArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YahooTechArticleViewController.swift; sourceTree = "<group>"; };
-		AFA010932147C718005F298B /* QiitaArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaArticleViewController.swift; sourceTree = "<group>"; };
-		AFA010952147FDD4005F298B /* QiitaArticleCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaArticleCollectionViewController.swift; sourceTree = "<group>"; };
-		AFA010972147FDDF005F298B /* YahooEconomyArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YahooEconomyArticleViewController.swift; sourceTree = "<group>"; };
-		AFA010992147FDEC005F298B /* YahooEntaArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YahooEntaArticleViewController.swift; sourceTree = "<group>"; };
-		AFA0109B2147FDFA005F298B /* YahooSportsArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YahooSportsArticleViewController.swift; sourceTree = "<group>"; };
 		AFA0109D2148005E005F298B /* FeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItem.swift; sourceTree = "<group>"; };
 		AFA0109F2148EAC4005F298B /* WebViewDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewDetailViewController.swift; sourceTree = "<group>"; };
 		AFADCCCD215B8F7E008B0FF2 /* CollectionViewDataSouce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSouce.swift; sourceTree = "<group>"; };
@@ -122,12 +116,22 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		AF098E4D215E32E400ECD202 /* Not Use */ = {
+			isa = PBXGroup;
+			children = (
+				AF098E4B215E32CE00ECD202 /* QiitaArticleCollectionViewController.swift */,
+				AFADCCCD215B8F7E008B0FF2 /* CollectionViewDataSouce.swift */,
+			);
+			path = "Not Use";
+			sourceTree = "<group>";
+		};
 		AF25E915214A5B78004008EF /* model */ = {
 			isa = PBXGroup;
 			children = (
 				AFA0109D2148005E005F298B /* FeedItem.swift */,
 				AF25E913214A4E3D004008EF /* BaseContent.swift */,
 				AF25E91A214E65D4004008EF /* Const.swift */,
+				AF098E4D215E32E400ECD202 /* Not Use */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -136,26 +140,21 @@
 			isa = PBXGroup;
 			children = (
 				AFA0108F2147C6EE005F298B /* TabsViewController.swift */,
-				AFA010912147C709005F298B /* YahooTechArticleViewController.swift */,
-				AFA010932147C718005F298B /* QiitaArticleViewController.swift */,
-				AFA010952147FDD4005F298B /* QiitaArticleCollectionViewController.swift */,
-				AFA010972147FDDF005F298B /* YahooEconomyArticleViewController.swift */,
-				AFA010992147FDEC005F298B /* YahooEntaArticleViewController.swift */,
-				AFA0109B2147FDFA005F298B /* YahooSportsArticleViewController.swift */,
+				AF098E47215D00E400ECD202 /* ArticleViewController.swift */,
 				AFA0109F2148EAC4005F298B /* WebViewDetailViewController.swift */,
-				AF25E917214E3DD1004008EF /* New Group */,
+				AF25E917214E3DD1004008EF /* Views */,
 			);
 			path = viewController;
 			sourceTree = "<group>";
 		};
-		AF25E917214E3DD1004008EF /* New Group */ = {
+		AF25E917214E3DD1004008EF /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				AF25E964214F99AD004008EF /* TableViewDataSouce.swift */,
-				AFADCCCD215B8F7E008B0FF2 /* CollectionViewDataSouce.swift */,
 				AF270612215903DE00017915 /* ReadXML.swift */,
+				AF098E49215DD32D00ECD202 /* ReadJson.swift */,
+				AF25E964214F99AD004008EF /* TableViewDataSouce.swift */,
 			);
-			path = "New Group";
+			path = Views;
 			sourceTree = "<group>";
 		};
 		AFD10F83214796660053D001 = {
@@ -393,21 +392,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFA0109C2147FDFA005F298B /* YahooSportsArticleViewController.swift in Sources */,
-				AFA010942147C718005F298B /* QiitaArticleViewController.swift in Sources */,
 				AF25E966214F99AD004008EF /* TableViewDataSouce.swift in Sources */,
-				AFA010982147FDDF005F298B /* YahooEconomyArticleViewController.swift in Sources */,
 				AFA010A02148EAC4005F298B /* WebViewDetailViewController.swift in Sources */,
-				AFA010962147FDD4005F298B /* QiitaArticleCollectionViewController.swift in Sources */,
-				AFA010922147C70A005F298B /* YahooTechArticleViewController.swift in Sources */,
-				AFA0109A2147FDEC005F298B /* YahooEntaArticleViewController.swift in Sources */,
 				AFD10F90214796660053D001 /* AppDelegate.swift in Sources */,
+				AF098E48215D00E400ECD202 /* ArticleViewController.swift in Sources */,
+				AF098E4C215E32CF00ECD202 /* QiitaArticleCollectionViewController.swift in Sources */,
 				AFA0109E2148005F005F298B /* FeedItem.swift in Sources */,
 				AF25E914214A4E3D004008EF /* BaseContent.swift in Sources */,
 				AF270613215903DE00017915 /* ReadXML.swift in Sources */,
 				AFADCCCE215B8F7E008B0FF2 /* CollectionViewDataSouce.swift in Sources */,
 				AFA010902147C6EE005F298B /* TabsViewController.swift in Sources */,
 				AF25E91B214E65D4004008EF /* Const.swift in Sources */,
+				AF098E4A215DD32D00ECD202 /* ReadJson.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

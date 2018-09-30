@@ -16,7 +16,7 @@ class WebViewDetailViewController: UIViewController ,UIWebViewDelegate {
 
     @IBOutlet weak var webView: UIWebView!
     var webURL: URL?
-    var barTitle : String = ""
+    var barTitle: String = ""
     var webViewDelegate: FavProtocol?
     
     override func viewDidLoad() {
@@ -25,11 +25,11 @@ class WebViewDetailViewController: UIViewController ,UIWebViewDelegate {
         let title = UILabel()
         title.textColor = UIColor.gray
         title.text = barTitle
-        self.navigationItem.titleView = title
+        navigationItem.titleView = title
         
         webView.delegate = self
         let urlRequest = URLRequest(url: webURL!)
-        self.webView.loadRequest(urlRequest)
+        webView.loadRequest(urlRequest)
     }
     
     @IBAction func button(_ sender: Any) {

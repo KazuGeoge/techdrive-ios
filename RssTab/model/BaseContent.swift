@@ -11,7 +11,7 @@ import SwiftyJSON
 struct BaseContent {
     var title :  String?
     var link : String?
-    var image: String
+    var image: String?
     
     init(title: String, link: String, image: String) {
         self.title = title
@@ -20,8 +20,8 @@ struct BaseContent {
     }
     
     init(json: JSON) {
-    self.title = json["title"].string
-    self.link = json["url"].string!
-    self.image = json["user"]["profile_image_url"].string!
+        self.title = json["title"].string
+        self.link = json["url"].string
+        self.image = json["user"]["profile_image_url"].string
     }
 }
