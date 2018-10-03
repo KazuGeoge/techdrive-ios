@@ -10,6 +10,8 @@ struct Const {
     static let QIITA = "https://qiita.com/api/v2/items"
     static let INTERNATIONAL = "https://headlines.yahoo.co.jp/rss/all-c_int.xml"
     static let ECONOMY = "https://headlines.yahoo.co.jp/rss/all-bus.xml"
-    static let ENTA =   "https://headlines.yahoo.co.jp/rss/all-c_ent.xml"
-    static let SPORTS = "https://headlines.yahoo.co.jp/rss/all-c_spo.xml"
+    static let TECHTITLE = "IT 科学ニュース"
+    static let QIITATITLE = "キータ一覧"
+    static let INTERNATIONALTITLE = "国際ニュース"
+    static let ECONOMYTITLE = "経済ニュース"
 }

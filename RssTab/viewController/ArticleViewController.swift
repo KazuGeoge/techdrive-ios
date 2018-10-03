@@ -12,12 +12,12 @@ protocol JsonsLink {
     func loadAPI(link: String)
 }
 
-class ArticleViewController: UIViewController, TableProtocol, FavProtocol, ParsedXMLData, DecodedJsonData {
+class ArticleViewController: UIViewController, TableProtocol, FavProtocol, ParsedXMLData, DecodedJsonData, EditingCell {
 
     @IBOutlet weak var tableView: UITableView!
-    var sectionTitle = [""]
-    var feedURL = URL(string: "")
-    var feedLink = ""
+    var sectionTitles: [String] = []
+    var feedURL: URL?
+    var feedLink: String?
     var tableViewDataSouce: TableViewDataSouce = TableViewDataSouce()
     var readXML: ReadXML = ReadXML()
     var readJson: ReadJson = ReadJson()
@@ -31,15 +31,15 @@ class ArticleViewController: UIViewController, TableProtocol, FavProtocol, Parse
         configureTableView()
     }
     
+    // TableViewのDelegateを設定
     private func configureTableView() {
-        tableViewDataSouce.sectionTitle += sectionTitle
+        tableViewDataSouce.sectionTitles += sectionTitles
         tableViewDataSouce.tableDelegate = self
         tableViewDataSouce.favDelegate = self
-        tableViewDataSouce.favDelegate = self
+        tableViewDataSouce.editingCell = self
         tableView.delegate = tableViewDataSouce
         tableView.dataSource = tableViewDataSouce
         tableView.register(UITableViewCell.self, forCellReuseIdentifier:"cell")
-        view.addSubview(tableView)
     }
     
     private func loadAPIArticle() {
@@ -54,45 +54,50 @@ class ArticleViewController: UIViewController, TableProtocol, FavProtocol, Parse
             // Jsonファイルをデコード
             readJson.decodedJsonData = self
             jsonsLink = readJson
-            jsonsLink?.loadAPI(link: feedLink)
+            // Constで設定のためにnil無し
+            jsonsLink?.loadAPI(link: feedLink!)
         }
     }
     // パースされたデータを設定
-    func setXMLData(parsedCellTitle: [String], parsedCellURL: [String]) {
-        tableViewDataSouce.cellTitle = parsedCellTitle
-        tableViewDataSouce.cellLink = parsedCellURL
+    func setXMLData(parsedCellTitles: [String], parsedCellURLs: [String]) {
+        tableViewDataSouce.cellTitles = parsedCellTitles
+        tableViewDataSouce.cellLinks = parsedCellURLs
     }
     // デコードされたデータを設定
-    func setJsonData(decodedCellTitle: [String], decodedCellLink: [String]) {
-        tableViewDataSouce.cellTitle = decodedCellTitle
-        tableViewDataSouce.cellLink = decodedCellLink
+    func setJsonData(decodedCellTitles: [String], decodedCellLinks: [String]) {
+        tableViewDataSouce.cellTitles = decodedCellTitles
+        tableViewDataSouce.cellLinks = decodedCellLinks
         tableView.reloadData()
     }
     // WebViewへの遷移
-    func pushWebView(webView: UIViewController) {
-        self.navigationController?.pushViewController(webView, animated: true)
+    func pushViewController(webView: UIViewController) {
+        navigationController?.pushViewController(webView, animated: true)
+    }
+    // 編集されたTabelViewを適用する
+    func editCell() {
+        tableView.reloadData()
     }
     // お気に入りを追加
     func addFavCell(titleCell: String, webURL: URL) {
         var sortedCellTitle: [String] = []
         var sortedCellLink: [String] = []
-        tableViewDataSouce.favCellTitle.append(titleCell)
-        tableViewDataSouce.favCellURL.append(webURL)
-            
-        for title in tableViewDataSouce.cellTitle {
+        tableViewDataSouce.favCellTitles.append(titleCell)
+        tableViewDataSouce.favCellURLs.append(webURL)
+        
+        for title in tableViewDataSouce.cellTitles {
             if title != titleCell {
                 sortedCellTitle.append(title)
             }
         }
             
-        for link in tableViewDataSouce.cellLink {
+        for link in tableViewDataSouce.cellLinks {
             let convertURL = URL(string: link)
             if webURL != convertURL {
                 sortedCellLink.append(link)
             }
         }
-        tableViewDataSouce.cellTitle = sortedCellTitle
-        tableViewDataSouce.cellLink = sortedCellLink
+        tableViewDataSouce.cellTitles = sortedCellTitle
+        tableViewDataSouce.cellLinks = sortedCellLink
         tableView.reloadData()
     }
 }

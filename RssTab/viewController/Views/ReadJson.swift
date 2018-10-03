@@ -11,17 +11,18 @@ import Alamofire
 import SwiftyJSON
 
 protocol DecodedJsonData {
-    func setJsonData(decodedCellTitle: [String], decodedCellLink: [String])
+    func setJsonData(decodedCellTitles: [String], decodedCellLinks: [String])
 }
 
 class ReadJson:NSObject, JsonsLink {
 
-    var content: BaseContent?
-    var contentList: [BaseContent] = []
+    private var cellTitles: [String] = []
+    private var cellLinks: [String] = []
+    private var contentLists: [BaseContent] = []
+    private var content: BaseContent?
     var decodedJsonData: DecodedJsonData?
-    var cellTitle: [String] = []
-    var cellLink: [String] = []
-    
+    var isSearchFlag: Bool?
+   
     func loadAPI(link: String) {
         let URL:String = link
         Alamofire.request(URL, method: .get, encoding: JSONEncoding.default).responseJSON{ response in
@@ -29,19 +30,23 @@ class ReadJson:NSObject, JsonsLink {
             switch response.result {
             case .success:
                 
+                self.contentLists = []
+                self.cellTitles = []
+                self.cellLinks = []
+                
                 if let value = response.result.value {
                     let json = JSON(value)
                     json.forEach { (_, json) in
                         let content = BaseContent(json: json)
-                        self.contentList.append(content)
-                        self.cellTitle.append(content.title!)
-                        self.cellLink.append(content.link!)
-                        self.decodedJsonData?.setJsonData(decodedCellTitle: self.cellTitle, decodedCellLink: self.cellLink)
+                        self.contentLists.append(content)
+                        self.cellTitles.append(content.title ?? "")
+                        self.cellLinks.append(content.link ?? "")
                     }
                 }
             case .failure(let error):
                 print(error)
             }
+            self.decodedJsonData?.setJsonData(decodedCellTitles: self.cellTitles, decodedCellLinks: self.cellLinks)
         }
     }
 }

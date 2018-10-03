@@ -65,6 +65,45 @@
             </objects>
             <point key="canvasLocation" x="-821.60000000000002" y="-210.04497751124438"/>
         </scene>
+        <!--Search View Controller-->
+        <scene sceneID="2x0-Cc-NMQ">
+            <objects>
+                <viewController storyboardIdentifier="SearchView" id="7p4-bn-wfe" customClass="SearchViewController" customModule="RssTab" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BQF-wX-GOa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KMn-wR-MNV">
+                                <rect key="frame" x="0.0" y="80" width="375" height="587"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="rie-Gi-Ot2">
+                                <rect key="frame" x="0.0" y="24" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="KMn-wR-MNV" firstAttribute="top" secondItem="rie-Gi-Ot2" secondAttribute="bottom" id="LAg-Y0-UJX"/>
+                            <constraint firstItem="rie-Gi-Ot2" firstAttribute="leading" secondItem="MmO-ez-045" secondAttribute="leading" id="aak-K7-jMg"/>
+                            <constraint firstItem="rie-Gi-Ot2" firstAttribute="top" secondItem="MmO-ez-045" secondAttribute="top" constant="4" id="eqF-Og-vPs"/>
+                            <constraint firstItem="KMn-wR-MNV" firstAttribute="leading" secondItem="BQF-wX-GOa" secondAttribute="leading" id="gvJ-Qj-mih"/>
+                            <constraint firstAttribute="trailing" secondItem="KMn-wR-MNV" secondAttribute="trailing" id="hAZ-pb-6Dh"/>
+                            <constraint firstItem="rie-Gi-Ot2" firstAttribute="trailing" secondItem="MmO-ez-045" secondAttribute="trailing" id="tNm-jm-XJd"/>
+                            <constraint firstItem="KMn-wR-MNV" firstAttribute="bottom" secondItem="MmO-ez-045" secondAttribute="bottom" id="toi-iq-AUs"/>
+                            <constraint firstItem="KMn-wR-MNV" firstAttribute="top" secondItem="MmO-ez-045" secondAttribute="top" constant="60" id="zAz-2J-YsC"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="MmO-ez-045"/>
+                    </view>
+                    <connections>
+                        <outlet property="searchBar" destination="rie-Gi-Ot2" id="iRr-nH-tIr"/>
+                        <outlet property="tableView" destination="KMn-wR-MNV" id="FFQ-Dc-ALo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OLK-gW-npY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-836" y="506.89655172413796"/>
+        </scene>
         <!--Article View Controller-->
         <scene sceneID="G6g-Tm-Xp3">
             <objects>

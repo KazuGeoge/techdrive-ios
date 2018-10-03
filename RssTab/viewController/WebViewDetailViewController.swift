@@ -16,7 +16,7 @@ class WebViewDetailViewController: UIViewController ,UIWebViewDelegate {
 
     @IBOutlet weak var webView: UIWebView!
     var webURL: URL?
-    var barTitle: String = ""
+    var barTitle: String?
     var webViewDelegate: FavProtocol?
     
     override func viewDidLoad() {
@@ -31,10 +31,25 @@ class WebViewDetailViewController: UIViewController ,UIWebViewDelegate {
         let urlRequest = URLRequest(url: webURL!)
         webView.loadRequest(urlRequest)
     }
-    
+    // お気に入りを追加
     @IBAction func button(_ sender: Any) {
-        webViewDelegate?.addFavCell(titleCell: barTitle, webURL: webURL!)
-        print("お気に入りに追加")
+        
+        let alertController = UIAlertController(
+            title: "お気に入りに追加",
+            message: "お気に入りに追加してよろしいですか？",
+            preferredStyle: .alert
+        )
+        // キャンセルボタン
+        alertController.addAction(UIAlertAction(title: "キャンセル", style: .cancel, handler: nil))
+        // OKボタン
+        alertController.addAction(UIAlertAction(title: "OK!", style: .default, handler: {
+            OKAction in self.webViewDelegate?.addFavCell(titleCell: self.barTitle!, webURL: self.webURL!)
+            print("お気に入りに追加")
+        }
+            )
+        )
+        // アラートを表示
+        present(alertController, animated: true, completion: nil)
     }
     
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {

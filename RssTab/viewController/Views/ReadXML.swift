@@ -9,20 +9,21 @@
 import UIKit
 
 protocol ParsedXMLData {
-    func setXMLData(parsedCellTitle: [String], parsedCellURL: [String])
+    func setXMLData(parsedCellTitles: [String], parsedCellURLs: [String])
 }
 
 class ReadXML: NSObject, XMLParserDelegate {
     
-    private var feedItems = [FeedItem]()
+    private var feedItems: [FeedItem] = []
     private var currentElementName: String?
     private let itemElementName = "item"
     private let titleElementName = "title"
     private let linkElementName = "link"
     private var isSplitTilte: Bool? = true
     var parsedXMLData: ParsedXMLData?
-    var cellTitle: [String] = []
-    var cellLink: [String] = []
+    var cellTitles: [String] = []
+    var cellLinks: [String] = []
+    var isSearchFlag: Bool?
     
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
         currentElementName = nil
@@ -36,7 +37,7 @@ class ReadXML: NSObject, XMLParserDelegate {
     
     func parser(_ parser: XMLParser, foundCharacters string: String) {
         
-        if feedItems.count > 0 {
+        if feedItems.isEmpty == false {
             var lastItem = feedItems[feedItems.count - 1]
             
             switch currentElementName {
@@ -46,16 +47,16 @@ class ReadXML: NSObject, XMLParserDelegate {
                 if isSplitTilte == true {
                     let tmpString = lastItem.title
                     lastItem.title = tmpString + string
-                    cellTitle.append(lastItem.title)
+                    cellTitles.append(lastItem.title)
                     isSplitTilte = false
                 } else {
                     //マルチバイトによる分裂したタイトルを結合
                     let tmpString = lastItem.title
                     lastItem.title = tmpString + string
-                    if let lastCelltitle = cellTitle.last {
+                    if let lastCelltitle = cellTitles.last {
                         let BondCellTitle = lastCelltitle + lastItem.title
-                        cellTitle.removeLast()
-                        cellTitle.append(BondCellTitle)
+                        cellTitles.removeLast()
+                        cellTitles.append(BondCellTitle)
                     }
                 }
                 
@@ -63,7 +64,7 @@ class ReadXML: NSObject, XMLParserDelegate {
                 
                 if isSplitTilte == false {
                     lastItem.link = string
-                    cellLink.append(lastItem.link)
+                    cellLinks.append(lastItem.link)
                     
                     print("firstCellURL:\(lastItem.link)")
                     isSplitTilte = true
@@ -75,6 +76,6 @@ class ReadXML: NSObject, XMLParserDelegate {
     
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         currentElementName = nil
-        parsedXMLData?.setXMLData(parsedCellTitle: cellTitle, parsedCellURL: cellLink)
+        parsedXMLData?.setXMLData(parsedCellTitles: cellTitles, parsedCellURLs: cellLinks)
     }
 }
