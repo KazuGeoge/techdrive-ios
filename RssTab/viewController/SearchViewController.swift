@@ -8,18 +8,18 @@
 
 import UIKit
 
-class SearchViewController: UIViewController, UISearchBarDelegate, DecodedJsonData, TableProtocol, XMLParserDelegate, ParsedXMLData{
-    
+class SearchViewController: UIViewController, UISearchBarDelegate, TableProtocol, SeachProtocol {
+   
     @IBOutlet var tableView: UITableView!
     @IBOutlet var searchBar: UISearchBar!
     private var resultTitles: [String] = []
     private var resultLinks: [String] = []
+    private var resultNickNames: [String] = []
     private var searchWord: String?
     private let overlapTableView = UIView()
     private var XMLsConstList = [Const.ECONOMY, Const.TECH, Const.INTERNATIONAL]
     private var webViewDetailVC: WebViewDetailViewController = WebViewDetailViewController()
     var tableViewDataSouce: TableViewDataSouce = TableViewDataSouce()
-    var readXML: ReadXML = ReadXML()
     var readJson: ReadJson = ReadJson()
     var decodedJsonData: DecodedJsonData?
     var jsonsLink: JsonsLink?
@@ -97,48 +97,29 @@ class SearchViewController: UIViewController, UISearchBarDelegate, DecodedJsonDa
         searchBar.text = ""
         self.view.endEditing(true)
     }
-    // APIを飛ばし配列に格納した後、検索ワードを部分一致で抽出する
+    // APIを飛ばし、検索ワードを抽出する
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         configureTableView()
         searchBar.text = ""
-        readJson.decodedJsonData = self
-        readXML.parsedXMLData = self
-        
-        for link in XMLsConstList {
-            let constURL = URL(string: link)
-            let parser:XMLParser? = XMLParser(contentsOf: constURL!)
-            parser?.delegate = readXML
-            parser?.parse()
-        }
-        readXML.cellTitles = []
-        readXML.cellLinks = []
+        readJson.seachProtocol = self
+        readJson.isSearchFlag = true
         jsonsLink = readJson
-        jsonsLink?.loadAPI(link: Const.QIITA)
+        let encodedString : String = searchWord!.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        jsonsLink?.loadAPI(link: Const.ATNDBASELINK + encodedString + Const.ASSIGNFORMAT)
         tableView.reloadData()
         view.endEditing(true)
     }
-    // ParseしたXMLのデータをセット
-    func setXMLData(parsedCellTitles: [String], parsedCellURLs: [String]) {
-        resultTitles = parsedCellTitles
-        resultLinks = parsedCellURLs
-    }
+   
     // DecodeしたJsonのデータをセットした後TableViewをReloadする
-    func setJsonData(decodedCellTitles: [String], decodedCellLinks: [String]) {
-        var arraysSubscript = 0
+    func setJsonData(searchedCellTitle: [String], searchedCellLink: [String], nickName: [String]) {
         tableViewDataSouce.searchResultTitle.removeAll()
         tableViewDataSouce.searchResultLinks.removeAll()
 
-        resultTitles += decodedCellTitles
-        resultLinks += decodedCellLinks
+        resultTitles += searchedCellTitle
+        resultLinks += searchedCellLink
+        resultNickNames += nickName
         tableViewDataSouce.searchSection = ["検索結果"]
-
-        for title in resultTitles {
-            if title.lowercased().contains(searchWord!) {
-                tableViewDataSouce.searchResultTitle.append(title)
-                tableViewDataSouce.searchResultLinks.append(resultLinks[arraysSubscript])
-            }
-            arraysSubscript += 1
-        }
+       
         tableView.reloadData()
         resultTitles.removeAll()
         resultLinks.removeAll()
