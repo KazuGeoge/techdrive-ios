@@ -26,8 +26,9 @@ class TableViewDataSouce: NSObject, UITableViewDataSource, UITableViewDelegate {
     var cellLinks: [String] = []
     var imageLinks: [String] = []
     var favCellTitles: [String] = []
-    var searchResultTitle: [String] = []
+    var searchResultTitles: [String] = []
     var searchResultLinks: [String] = []
+    var nickNames: [String] = []
     var favCellURLs: [URL] = []
     var tableDelegate: TableProtocol?
     var favDelegate: FavProtocol?
@@ -52,7 +53,7 @@ class TableViewDataSouce: NSObject, UITableViewDataSource, UITableViewDelegate {
         
         if section == 0 {
             if isFromSearchView == true {
-                cellCount += searchResultTitle.count
+                cellCount += searchResultTitles.count
                 return cellCount
             } else {
                 cellCount += favCellTitles.count
@@ -65,26 +66,24 @@ class TableViewDataSouce: NSObject, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return feedItems(indexPath: indexPath)
-    }
-    
-    func feedItems(indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "cell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ListCell
         
         if indexPath.section == 0 {
             if isFromSearchView == true {
-                let feedItem = searchResultTitle[indexPath.row]
-                cell.textLabel?.text = feedItem
+                let feedItem = searchResultTitles[indexPath.row]
+                let feedNickName = nickNames[indexPath.row]
+                cell.setCell(cellTitle: feedItem, cellNickname: feedNickName)
                 return cell
+                
             } else {
                 let feedItem = favCellTitles[indexPath.row]
-                cell.textLabel?.text = feedItem
+                cell.setCell(cellTitle: feedItem, cellNickname: "お気に入り記事")
                 return cell
             }
 
         } else if indexPath.section == 1 {
             let feedItem = cellTitles[indexPath.row]
-            cell.textLabel?.text = feedItem
+            cell.setCell(cellTitle: feedItem, cellNickname: "")
             return cell
         }
         return UITableViewCell()
@@ -98,7 +97,7 @@ class TableViewDataSouce: NSObject, UITableViewDataSource, UITableViewDelegate {
                 if isFromSearchView == true {
                     let feedItem = searchResultLinks[indexPath.row]
                     webViewDetailVC.webURL = URL(string: feedItem)
-                    let title = searchResultTitle[indexPath.row]
+                    let title = searchResultTitles[indexPath.row]
                     webViewDetailVC.barTitle = title
                     tableDelegate?.pushViewController(webView: webViewDetailVC)
                 } else {
@@ -118,15 +117,17 @@ class TableViewDataSouce: NSObject, UITableViewDataSource, UITableViewDelegate {
             }
         }
     }
+    
     // Cellのデータを削除した後に親ビューにTableViewのReloadを委譲する
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         if indexPath.section == 0 {
             if isFromSearchView == true {
-                searchResultTitle.remove(at: indexPath.row)
+                searchResultTitles.remove(at: indexPath.row)
                 searchResultLinks.remove(at: indexPath.row)
             } else {
                 cellTitles.insert(favCellTitles[indexPath.row], at: 0)
+                
                 do {
                     let favURLsString = try String(contentsOf: favCellURLs[indexPath.row])
                     cellLinks.insert(favURLsString, at: 0)
@@ -134,6 +135,7 @@ class TableViewDataSouce: NSObject, UITableViewDataSource, UITableViewDelegate {
                 catch _ {
                     cellLinks.append("")
                 }
+                
                 favCellTitles.remove(at: indexPath.row)
                 favCellURLs.remove(at: indexPath.row)
             }
@@ -144,7 +146,7 @@ class TableViewDataSouce: NSObject, UITableViewDataSource, UITableViewDelegate {
         editingCell?.editCell()
     }
     
-     func tableView(_ table: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ table: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
     }
 }

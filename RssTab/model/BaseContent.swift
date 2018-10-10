@@ -29,8 +29,8 @@ struct BaseContent {
         self.title = json["title"].string
         self.link = json["url"].string
         self.imageUrlString = json["user"]["profile_image_url"].string
-        self.eventTitle = json["events"][0]["event"]["title"].string
-        self.eventLink = json["events"][0]["_event"]["_event_url"].string
-        self.nickName = json["events"][0]["_event"]["_owner_nickname"].string
+        self.eventTitle = json["event"]["title"].string
+        self.eventLink = json["event"]["event_url"].string
+        self.nickName = json["event"]["owner_nickname"].string
     }
 }

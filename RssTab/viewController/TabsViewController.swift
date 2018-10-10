@@ -15,38 +15,37 @@ class TabsViewController: UITabBarController {
         
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         var viewControllers: [UIViewController] = []
+        let articleViews = ["yahooTech", "qiita", "yahooInterNational", "yahooEconomy"]
         
         // 記事を表示するViewControllerをインスタンス化
-        if let yahooTechVC = mainStoryboard.instantiateViewController(withIdentifier: "ArticleView") as? ArticleViewController {
-            yahooTechVC.sectionTitles = [Const.TECHTITLE]
-            yahooTechVC.tabBarItem.title = Const.TECHTITLE
-            yahooTechVC.feedURL = URL(string: Const.TECH)
-            yahooTechVC.isXML = true
-            viewControllers.append(yahooTechVC)
+        for articleView in articleViews {
+            if let ArticleView = mainStoryboard.instantiateViewController(withIdentifier: "ArticleView") as? ArticleViewController {
+                
+                if articleView == "yahooTech" {
+                    ArticleView.sectionTitles = [Const.TECHTITLE]
+                    ArticleView.tabBarItem.title = Const.TECHTITLE
+                    ArticleView.feedURL = URL(string: Const.TECH)
+                    
+                } else if articleView == "qiita" {
+                    ArticleView.sectionTitles = [Const.QIITATITLE]
+                    ArticleView.tabBarItem.title = Const.QIITATITLE
+                    ArticleView.feedLink = Const.QIITA
+                    ArticleView.isJson = true
+                    
+                } else if articleView == "yahooInterNational" {
+                    ArticleView.sectionTitles = [Const.INTERNATIONALTITLE]
+                    ArticleView.tabBarItem.title = Const.INTERNATIONALTITLE
+                    ArticleView.feedURL = URL(string: Const.INTERNATIONAL)
+                    
+                } else if articleView ==  "yahooEconomy" {
+                    ArticleView.sectionTitles = [Const.ECONOMYTITLE]
+                    ArticleView.tabBarItem.title = Const.ECONOMYTITLE
+                    ArticleView.feedURL = URL(string: Const.ECONOMY)
+                }
+                viewControllers.append(ArticleView)
+            }
         }
         
-        if let qiitaVC = mainStoryboard.instantiateViewController(withIdentifier: "ArticleView") as? ArticleViewController {
-            qiitaVC.sectionTitles = [Const.QIITATITLE]
-            qiitaVC.tabBarItem.title = Const.QIITATITLE
-            qiitaVC.feedLink = Const.QIITA
-            viewControllers.append(qiitaVC)
-        }
-        
-        if let yahooInternational = mainStoryboard.instantiateViewController(withIdentifier: "ArticleView") as? ArticleViewController {
-            yahooInternational.sectionTitles = [Const.INTERNATIONALTITLE]
-            yahooInternational.tabBarItem.title = Const.INTERNATIONALTITLE
-            yahooInternational.feedURL = URL(string: Const.INTERNATIONAL)
-            yahooInternational.isXML = true
-            viewControllers.append(yahooInternational)
-        }
-        
-        if let yahooEconomyVC = mainStoryboard.instantiateViewController(withIdentifier: "ArticleView") as? ArticleViewController {
-            yahooEconomyVC.sectionTitles = [Const.ECONOMYTITLE]
-            yahooEconomyVC.tabBarItem.title = Const.ECONOMYTITLE
-            yahooEconomyVC.feedURL = URL(string: Const.ECONOMY)
-            yahooEconomyVC.isXML = true
-            viewControllers.append(yahooEconomyVC)
-        }
         // 検索のViewControllerをインスタンス化
         if let searchVC = mainStoryboard.instantiateViewController(withIdentifier: "SearchView") as? SearchViewController {
             viewControllers.append(searchVC)

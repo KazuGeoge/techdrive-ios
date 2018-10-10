@@ -31,6 +31,7 @@ class WebViewDetailViewController: UIViewController ,UIWebViewDelegate {
         let urlRequest = URLRequest(url: webURL!)
         webView.loadRequest(urlRequest)
     }
+    
     // お気に入りを追加
     @IBAction func button(_ sender: Any) {
         

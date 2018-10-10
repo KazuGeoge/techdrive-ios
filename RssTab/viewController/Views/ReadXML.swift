@@ -23,7 +23,6 @@ class ReadXML: NSObject, XMLParserDelegate {
     var parsedXMLData: ParsedXMLData?
     var cellTitles: [String] = []
     var cellLinks: [String] = []
-    var isSearchFlag: Bool?
     
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
         currentElementName = nil
@@ -65,8 +64,6 @@ class ReadXML: NSObject, XMLParserDelegate {
                 if isSplitTilte == false {
                     lastItem.link = string
                     cellLinks.append(lastItem.link)
-                    
-                    print("firstCellURL:\(lastItem.link)")
                     isSplitTilte = true
                 }
             default: break

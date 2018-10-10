@@ -15,6 +15,7 @@
 		AF25E91B214E65D4004008EF /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF25E91A214E65D4004008EF /* Const.swift */; };
 		AF25E966214F99AD004008EF /* TableViewDataSouce.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF25E964214F99AD004008EF /* TableViewDataSouce.swift */; };
 		AF270613215903DE00017915 /* ReadXML.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF270612215903DE00017915 /* ReadXML.swift */; };
+		AF87FA46216C917B003A82AD /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF87FA45216C917B003A82AD /* ListCell.swift */; };
 		AFA010902147C6EE005F298B /* TabsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA0108F2147C6EE005F298B /* TabsViewController.swift */; };
 		AFA0109E2148005F005F298B /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA0109D2148005E005F298B /* FeedItem.swift */; };
 		AFA010A02148EAC4005F298B /* WebViewDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA0109F2148EAC4005F298B /* WebViewDetailViewController.swift */; };
@@ -54,6 +55,7 @@
 		AF25E91A214E65D4004008EF /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		AF25E964214F99AD004008EF /* TableViewDataSouce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSouce.swift; sourceTree = "<group>"; };
 		AF270612215903DE00017915 /* ReadXML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadXML.swift; sourceTree = "<group>"; };
+		AF87FA45216C917B003A82AD /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
 		AFA0108F2147C6EE005F298B /* TabsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsViewController.swift; sourceTree = "<group>"; };
 		AFA0109D2148005E005F298B /* FeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItem.swift; sourceTree = "<group>"; };
 		AFA0109F2148EAC4005F298B /* WebViewDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewDetailViewController.swift; sourceTree = "<group>"; };
@@ -156,8 +158,17 @@
 				AF270612215903DE00017915 /* ReadXML.swift */,
 				AF098E49215DD32D00ECD202 /* ReadJson.swift */,
 				AF25E964214F99AD004008EF /* TableViewDataSouce.swift */,
+				AF87FA44216C910B003A82AD /* cells */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		AF87FA44216C910B003A82AD /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				AF87FA45216C917B003A82AD /* ListCell.swift */,
+			);
+			path = cells;
 			sourceTree = "<group>";
 		};
 		AFD10F83214796660053D001 = {
@@ -398,6 +409,7 @@
 				AF25E966214F99AD004008EF /* TableViewDataSouce.swift in Sources */,
 				AFA010A02148EAC4005F298B /* WebViewDetailViewController.swift in Sources */,
 				AFD10F90214796660053D001 /* AppDelegate.swift in Sources */,
+				AF87FA46216C917B003A82AD /* ListCell.swift in Sources */,
 				AF098E48215D00E400ECD202 /* ArticleViewController.swift in Sources */,
 				AF098E4C215E32CF00ECD202 /* QiitaArticleCollectionViewController.swift in Sources */,
 				AFA0109E2148005F005F298B /* FeedItem.swift in Sources */,
