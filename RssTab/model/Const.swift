@@ -11,6 +11,7 @@ struct Const {
     static let INTERNATIONAL = "https://headlines.yahoo.co.jp/rss/all-c_int.xml"
     static let ECONOMY = "https://headlines.yahoo.co.jp/rss/all-bus.xml"
     static let ATNDBASELINK = "http://api.atnd.org/events/?keyword="
+    static let ERRORPAGE = "https://smartlog.jp/errorpage"
     
     static let TECHTITLE = "IT 科学ニュース"
     static let QIITATITLE = "キータ一覧"

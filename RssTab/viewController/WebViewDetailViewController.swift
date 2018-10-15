@@ -7,17 +7,21 @@
 //
 
 import UIKit
+import WebKit
 
 protocol FavProtocol {
     func addFavCell(titleCell: String, webURL: URL)
 }
 
-class WebViewDetailViewController: UIViewController ,UIWebViewDelegate {
+class WebViewDetailViewController: UIViewController ,WKUIDelegate, WKNavigationDelegate {
 
-    @IBOutlet weak var webView: UIWebView!
+    @IBOutlet weak var webView: WKWebView!
+    @IBOutlet weak var goBackButton: UIBarButtonItem!
+    @IBOutlet weak var goForwardButton: UIBarButtonItem!
     var webURL: URL?
     var barTitle: String?
     var webViewDelegate: FavProtocol?
+    var errorPage = URL(string: Const.ERRORPAGE)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,10 +30,38 @@ class WebViewDetailViewController: UIViewController ,UIWebViewDelegate {
         title.textColor = UIColor.gray
         title.text = barTitle
         navigationItem.titleView = title
+        LoadWebView()
         
-        webView.delegate = self
-        let urlRequest = URLRequest(url: webURL!)
-        webView.loadRequest(urlRequest)
+    }
+    
+    private func LoadWebView() {
+        // errorPageは定数のためnil無し
+        let urlRequest = URLRequest(url: webURL ?? errorPage!)
+        webView.load(urlRequest)
+        webView.navigationDelegate = self
+        webView.uiDelegate = self
+    }
+    
+    // 戻るボタンの設定
+    @IBAction func actGoBack(_ sender: Any) {
+        webView.goBack()
+    }
+    
+    // 進むボタンの設定
+    @IBAction func actGoForward(_ sender: Any) {
+        webView.goForward()
+    }
+    
+    // リロードボタンの設定
+    @IBAction func reloadButton(_ sender: Any) {
+        webView.reload()
+    }
+    
+    // safariに飛ぶボタンの設定
+    @IBAction func goSafariButton(_ sender: Any) {
+        // その時開いているURLを取得
+        let nowWebViewURL = webView.url
+        UIApplication.shared.open(nowWebViewURL!, options: [:], completionHandler: nil)
     }
     
     // お気に入りを追加
@@ -53,11 +85,22 @@ class WebViewDetailViewController: UIViewController ,UIWebViewDelegate {
         present(alertController, animated: true, completion: nil)
     }
     
-    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
-        return true
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        // インジケータの表示を開始する
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
+        // ボタンの有効性をチェック
+        self.goBackButton.isEnabled = self.webView.canGoBack
+        self.goForwardButton.isEnabled = self.webView.canGoForward
     }
     
-    func webView(webView: UIWebView!, shouldStartLoadWithRequest request: NSURLRequest!, navigationType: UIWebView.NavigationType) -> Bool {
-        return true
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        // インジケータの表示を終了する
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        
+        // ボタンの有効性をチェック
+        self.goBackButton.isEnabled = self.webView.canGoBack
+        self.goForwardButton.isEnabled = self.webView.canGoForward
+        
     }
 }

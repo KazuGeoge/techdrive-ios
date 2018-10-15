@@ -8,6 +8,13 @@
 
 import UIKit
 
+enum ArticleViews {
+    case yahooTech
+    case qiita
+    case yahooInterNational
+    case yahooEconomy
+}
+
 class TabsViewController: UITabBarController {
     
     override func viewDidLoad() {
@@ -18,31 +25,36 @@ class TabsViewController: UITabBarController {
         let articleViews = ["yahooTech", "qiita", "yahooInterNational", "yahooEconomy"]
         
         // 記事を表示するViewControllerをインスタンス化
-        for articleView in articleViews {
-            if let ArticleView = mainStoryboard.instantiateViewController(withIdentifier: "ArticleView") as? ArticleViewController {
+        for articleViewName in articleViews {
+            if let articleView = mainStoryboard.instantiateViewController(withIdentifier: "ArticleView") as? ArticleViewController {
                 
-                if articleView == "yahooTech" {
-                    ArticleView.sectionTitles = [Const.TECHTITLE]
-                    ArticleView.tabBarItem.title = Const.TECHTITLE
-                    ArticleView.feedURL = URL(string: Const.TECH)
+                switch articleViewName {
                     
-                } else if articleView == "qiita" {
-                    ArticleView.sectionTitles = [Const.QIITATITLE]
-                    ArticleView.tabBarItem.title = Const.QIITATITLE
-                    ArticleView.feedLink = Const.QIITA
-                    ArticleView.isJson = true
+                case "yahooTech":
+                    articleView.sectionTitles = [Const.TECHTITLE]
+                    articleView.tabBarItem.title = Const.TECHTITLE
+                    articleView.feedURL = URL(string: Const.TECH)
                     
-                } else if articleView == "yahooInterNational" {
-                    ArticleView.sectionTitles = [Const.INTERNATIONALTITLE]
-                    ArticleView.tabBarItem.title = Const.INTERNATIONALTITLE
-                    ArticleView.feedURL = URL(string: Const.INTERNATIONAL)
+                case "qiita":
+                    articleView.sectionTitles = [Const.QIITATITLE]
+                    articleView.tabBarItem.title = Const.QIITATITLE
+                    articleView.feedLink = Const.QIITA
+                    articleView.isJson = true
                     
-                } else if articleView ==  "yahooEconomy" {
-                    ArticleView.sectionTitles = [Const.ECONOMYTITLE]
-                    ArticleView.tabBarItem.title = Const.ECONOMYTITLE
-                    ArticleView.feedURL = URL(string: Const.ECONOMY)
+                case "yahooInterNational":
+                    articleView.sectionTitles = [Const.INTERNATIONALTITLE]
+                    articleView.tabBarItem.title = Const.INTERNATIONALTITLE
+                    articleView.feedURL = URL(string: Const.INTERNATIONAL)
+                    
+                case  "yahooEconomy":
+                    articleView.sectionTitles = [Const.ECONOMYTITLE]
+                    articleView.tabBarItem.title = Const.ECONOMYTITLE
+                    articleView.feedURL = URL(string: Const.ECONOMY)
+                    
+                default:
+                    break
                 }
-                viewControllers.append(ArticleView)
+                viewControllers.append(articleView)
             }
         }
         

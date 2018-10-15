@@ -38,7 +38,7 @@ class ArticleViewController: UIViewController, TableProtocol, FavProtocol, Parse
         tableViewDataSouce.editingCell = self
         tableView.delegate = tableViewDataSouce
         tableView.dataSource = tableViewDataSouce
-        tableView.register(ListCell.self, forCellReuseIdentifier:"cell")
+        tableView.register(ListCell.self, forCellReuseIdentifier: "cell")
     }
     
     private func loadAPIArticle() {

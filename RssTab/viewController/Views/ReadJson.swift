@@ -22,7 +22,7 @@ class ReadJson:NSObject, JsonsLink {
 
     private var cellTitles: [String] = []
     private var cellLinks: [String] = []
-    private var cellnikNames: [String] = []
+    private var cellNickNames: [String] = []
     var decodedJsonData: DecodedJsonData?
     var seachProtocol: SeachProtocol?
     var isSearchFlag: Bool?
@@ -35,7 +35,7 @@ class ReadJson:NSObject, JsonsLink {
                
                 self.cellTitles = []
                 self.cellLinks = []
-                self.cellnikNames = []
+                self.cellNickNames = []
                 
                 if let value = response.result.value {
                     let json = JSON(value)
@@ -46,7 +46,7 @@ class ReadJson:NSObject, JsonsLink {
                             let content = BaseContent(json: json)
                             self.cellTitles.append(content.eventTitle ?? "")
                             self.cellLinks.append(content.eventLink ?? "")
-                            self.cellnikNames.append(content.nickName ?? "")
+                            self.cellNickNames.append(content.nickName ?? "")
                         }
                      } else {
                         json.forEach { (_, json) in
@@ -60,7 +60,7 @@ class ReadJson:NSObject, JsonsLink {
                 print(error)
             }
             self.decodedJsonData?.setJsonData(decodedCellTitles: self.cellTitles, decodedCellLinks: self.cellLinks)
-            self.seachProtocol?.setJsonData(searchedCellTitles: self.cellTitles, searchedCellLinks: self.cellLinks, nickNames: self.cellnikNames)
+            self.seachProtocol?.setJsonData(searchedCellTitles: self.cellTitles, searchedCellLinks: self.cellLinks, nickNames: self.cellNickNames)
         }
     }
 }

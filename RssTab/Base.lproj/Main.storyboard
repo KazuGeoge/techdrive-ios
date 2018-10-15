@@ -18,10 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Ev-0L-TT3">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="edo-C8-ZxH">
                                 <rect key="frame" x="138" y="67" width="99" height="30"/>
                                 <state key="normal" title="⭐️お気に入り"/>
@@ -29,26 +25,74 @@
                                     <action selector="button:" destination="XzX-dQ-exl" eventType="touchUpInside" id="K4p-oG-K9K"/>
                                 </connections>
                             </button>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="67U-Ag-KRg">
+                                <rect key="frame" x="0.0" y="95" width="375" height="572"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yfB-au-Vvj">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="zTS-ml-QAJ"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem width="20" style="plain" systemItem="fixedSpace" id="exE-oo-XCT"/>
+                                    <barButtonItem tag="1" image="backImage" id="9Zh-ew-Pnp">
+                                        <connections>
+                                            <action selector="actGoBack:" destination="XzX-dQ-exl" id="Zov-Nu-ic6"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="WOk-ca-VDM"/>
+                                    <barButtonItem image="goImage" width="20" id="NrW-sl-yDT">
+                                        <connections>
+                                            <action selector="actGoForward:" destination="XzX-dQ-exl" id="lPn-bk-xgd"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="s4i-RB-v1i"/>
+                                    <barButtonItem systemItem="refresh" id="Uo8-0Y-bQm">
+                                        <connections>
+                                            <action selector="reloadButton:" destination="XzX-dQ-exl" id="1cv-EE-CqO"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="2QN-Kb-8dl"/>
+                                    <barButtonItem title="Item" image="safari" id="a8g-gL-Rcn">
+                                        <inset key="imageInsets" minX="0.0" minY="-2" maxX="0.0" maxY="0.0"/>
+                                        <inset key="largeContentSizeImageInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
+                                        <connections>
+                                            <action selector="goSafariButton:" destination="XzX-dQ-exl" id="bNW-vW-8S7"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="20" style="plain" systemItem="fixedSpace" id="zxQ-VZ-3lV"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="edo-C8-ZxH" firstAttribute="centerX" secondItem="2Ev-0L-TT3" secondAttribute="centerX" id="0Nl-IQ-AiJ"/>
-                            <constraint firstItem="edo-C8-ZxH" firstAttribute="top" secondItem="Aod-En-SMg" secondAttribute="top" constant="47" id="81h-c5-RqY"/>
-                            <constraint firstItem="2Ev-0L-TT3" firstAttribute="trailing" secondItem="Aod-En-SMg" secondAttribute="trailing" id="Bzl-ir-6tL"/>
-                            <constraint firstItem="2Ev-0L-TT3" firstAttribute="bottom" secondItem="Aod-En-SMg" secondAttribute="bottom" id="Vec-RJ-KyC"/>
-                            <constraint firstItem="2Ev-0L-TT3" firstAttribute="leading" secondItem="Aod-En-SMg" secondAttribute="leading" id="epQ-TB-h2l"/>
-                            <constraint firstItem="edo-C8-ZxH" firstAttribute="leading" secondItem="Aod-En-SMg" secondAttribute="leading" constant="138" id="q9m-F3-B3T"/>
-                            <constraint firstItem="2Ev-0L-TT3" firstAttribute="top" secondItem="3ts-6U-aV7" secondAttribute="top" id="r2f-2l-j5L"/>
+                            <constraint firstItem="67U-Ag-KRg" firstAttribute="bottom" secondItem="d9k-Ec-d2r" secondAttribute="bottom" id="8Kz-rD-15R"/>
+                            <constraint firstItem="edo-C8-ZxH" firstAttribute="top" secondItem="d9k-Ec-d2r" secondAttribute="top" constant="47" id="O7Q-aZ-Qks"/>
+                            <constraint firstAttribute="trailing" secondItem="67U-Ag-KRg" secondAttribute="trailing" id="UCL-Jc-Kjd"/>
+                            <constraint firstItem="yfB-au-Vvj" firstAttribute="trailing" secondItem="d9k-Ec-d2r" secondAttribute="trailing" id="VcN-SS-5cC"/>
+                            <constraint firstItem="67U-Ag-KRg" firstAttribute="top" secondItem="d9k-Ec-d2r" secondAttribute="top" constant="75" id="ZGf-a0-oBC"/>
+                            <constraint firstItem="yfB-au-Vvj" firstAttribute="bottom" secondItem="d9k-Ec-d2r" secondAttribute="bottom" id="aiO-wy-FpR"/>
+                            <constraint firstItem="yfB-au-Vvj" firstAttribute="leading" secondItem="67U-Ag-KRg" secondAttribute="leading" id="cyY-Ve-dbw"/>
+                            <constraint firstItem="67U-Ag-KRg" firstAttribute="leading" secondItem="3ts-6U-aV7" secondAttribute="leading" id="eQy-oA-TLj"/>
+                            <constraint firstItem="edo-C8-ZxH" firstAttribute="leading" secondItem="d9k-Ec-d2r" secondAttribute="leading" constant="138" id="naO-a1-afr"/>
+                            <constraint firstItem="edo-C8-ZxH" firstAttribute="centerX" secondItem="67U-Ag-KRg" secondAttribute="centerX" id="wZI-Q2-WzZ"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Aod-En-SMg"/>
+                        <viewLayoutGuide key="safeArea" id="d9k-Ec-d2r"/>
                     </view>
                     <connections>
-                        <outlet property="webView" destination="2Ev-0L-TT3" id="ZP0-W3-C2j"/>
+                        <outlet property="goBackButton" destination="9Zh-ew-Pnp" id="hQ8-xO-IDy"/>
+                        <outlet property="goForwardButton" destination="NrW-sl-yDT" id="YFf-OM-dFy"/>
+                        <outlet property="webView" destination="67U-Ag-KRg" id="Ufu-dq-vdh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y8b-yA-YUK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="951" y="-210"/>
+            <point key="canvasLocation" x="949.60000000000002" y="-210.04497751124438"/>
         </scene>
         <!--Tabs View Controller-->
         <scene sceneID="M03-JK-c31">
@@ -85,15 +129,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="KMn-wR-MNV" firstAttribute="top" secondItem="rie-Gi-Ot2" secondAttribute="bottom" id="LAg-Y0-UJX"/>
-                            <constraint firstItem="rie-Gi-Ot2" firstAttribute="leading" secondItem="MmO-ez-045" secondAttribute="leading" id="aak-K7-jMg"/>
-                            <constraint firstItem="rie-Gi-Ot2" firstAttribute="top" secondItem="MmO-ez-045" secondAttribute="top" constant="4" id="eqF-Og-vPs"/>
-                            <constraint firstItem="KMn-wR-MNV" firstAttribute="leading" secondItem="BQF-wX-GOa" secondAttribute="leading" id="gvJ-Qj-mih"/>
-                            <constraint firstAttribute="trailing" secondItem="KMn-wR-MNV" secondAttribute="trailing" id="hAZ-pb-6Dh"/>
-                            <constraint firstItem="rie-Gi-Ot2" firstAttribute="trailing" secondItem="MmO-ez-045" secondAttribute="trailing" id="tNm-jm-XJd"/>
-                            <constraint firstItem="KMn-wR-MNV" firstAttribute="bottom" secondItem="MmO-ez-045" secondAttribute="bottom" id="toi-iq-AUs"/>
-                            <constraint firstItem="KMn-wR-MNV" firstAttribute="top" secondItem="MmO-ez-045" secondAttribute="top" constant="60" id="zAz-2J-YsC"/>
+                            <constraint firstItem="rie-Gi-Ot2" firstAttribute="leading" secondItem="JUI-RN-DkB" secondAttribute="leading" id="aak-K7-jMg"/>
+                            <constraint firstItem="rie-Gi-Ot2" firstAttribute="top" secondItem="JUI-RN-DkB" secondAttribute="top" constant="4" id="eqF-Og-vPs"/>
+                            <constraint firstItem="KMn-wR-MNV" firstAttribute="leading" secondItem="JUI-RN-DkB" secondAttribute="leading" id="gvJ-Qj-mih"/>
+                            <constraint firstItem="JUI-RN-DkB" firstAttribute="trailing" secondItem="KMn-wR-MNV" secondAttribute="trailing" id="hAZ-pb-6Dh"/>
+                            <constraint firstItem="rie-Gi-Ot2" firstAttribute="trailing" secondItem="JUI-RN-DkB" secondAttribute="trailing" id="tNm-jm-XJd"/>
+                            <constraint firstItem="KMn-wR-MNV" firstAttribute="bottom" secondItem="JUI-RN-DkB" secondAttribute="bottom" id="toi-iq-AUs"/>
+                            <constraint firstItem="KMn-wR-MNV" firstAttribute="top" secondItem="JUI-RN-DkB" secondAttribute="top" constant="60" id="zAz-2J-YsC"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="MmO-ez-045"/>
+                        <viewLayoutGuide key="safeArea" id="JUI-RN-DkB"/>
                     </view>
                     <connections>
                         <outlet property="searchBar" destination="rie-Gi-Ot2" id="iRr-nH-tIr"/>
@@ -117,7 +161,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XA9-ql-DUU">
-                                <rect key="frame" x="297" y="16" width="62" height="30"/>
+                                <rect key="frame" x="328" y="16" width="31" height="30"/>
                                 <state key="normal" title="更新"/>
                                 <connections>
                                     <action selector="relaodButton:" destination="Spt-He-kUw" eventType="touchUpInside" id="n88-nd-05C"/>
@@ -127,14 +171,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="tx5-ap-Lt3" firstAttribute="top" secondItem="XA9-ql-DUU" secondAttribute="bottom" constant="8" id="1am-Wi-5ai"/>
-                            <constraint firstItem="XA9-ql-DUU" firstAttribute="leading" secondItem="ckD-YF-eBe" secondAttribute="leading" constant="297" id="4TW-n1-BIm"/>
-                            <constraint firstItem="XA9-ql-DUU" firstAttribute="top" secondItem="ckD-YF-eBe" secondAttribute="top" constant="-4" id="7OZ-1o-yKx"/>
-                            <constraint firstItem="ckD-YF-eBe" firstAttribute="trailing" secondItem="XA9-ql-DUU" secondAttribute="trailing" constant="16" id="BmV-js-nch"/>
-                            <constraint firstItem="tx5-ap-Lt3" firstAttribute="leading" secondItem="6Pe-m1-oM9" secondAttribute="leading" id="RMN-tG-nRT"/>
-                            <constraint firstAttribute="trailing" secondItem="tx5-ap-Lt3" secondAttribute="trailing" id="hEN-2P-R40"/>
-                            <constraint firstItem="tx5-ap-Lt3" firstAttribute="bottom" secondItem="ckD-YF-eBe" secondAttribute="bottom" id="tAY-AN-m6o"/>
+                            <constraint firstItem="XA9-ql-DUU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="RrF-FS-sMB" secondAttribute="leading" constant="20" symbolic="YES" id="4TW-n1-BIm"/>
+                            <constraint firstItem="XA9-ql-DUU" firstAttribute="top" secondItem="RrF-FS-sMB" secondAttribute="top" constant="-4" id="7OZ-1o-yKx"/>
+                            <constraint firstItem="RrF-FS-sMB" firstAttribute="trailing" secondItem="XA9-ql-DUU" secondAttribute="trailing" constant="16" id="BmV-js-nch"/>
+                            <constraint firstItem="tx5-ap-Lt3" firstAttribute="leading" secondItem="RrF-FS-sMB" secondAttribute="leading" id="RMN-tG-nRT"/>
+                            <constraint firstItem="RrF-FS-sMB" firstAttribute="trailing" secondItem="tx5-ap-Lt3" secondAttribute="trailing" id="hEN-2P-R40"/>
+                            <constraint firstItem="tx5-ap-Lt3" firstAttribute="bottom" secondItem="RrF-FS-sMB" secondAttribute="bottom" id="tAY-AN-m6o"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="ckD-YF-eBe"/>
+                        <viewLayoutGuide key="safeArea" id="RrF-FS-sMB"/>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="tx5-ap-Lt3" id="9re-oK-oXu"/>
@@ -145,4 +189,9 @@
             <point key="canvasLocation" x="21.600000000000001" y="-210.04497751124438"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="backImage" width="15" height="15"/>
+        <image name="goImage" width="15" height="15"/>
+        <image name="safari" width="14.399999618530273" height="14.399999618530273"/>
+    </resources>
 </document>
