@@ -10,14 +10,14 @@ struct Const {
     static let QIITA = "https://qiita.com/api/v2/items"
     static let INTERNATIONAL = "https://headlines.yahoo.co.jp/rss/all-c_int.xml"
     static let ECONOMY = "https://headlines.yahoo.co.jp/rss/all-bus.xml"
-    static let ATNDBASELINK = "http://api.atnd.org/events/?keyword="
-    static let ERRORPAGE = "https://smartlog.jp/errorpage"
+    static let ATND_BASE_LINK = "http://api.atnd.org/events/?keyword="
+    static let ERROR_PAGE = "https://smartlog.jp/errorpage"
     
-    static let TECHTITLE = "IT 科学ニュース"
-    static let QIITATITLE = "キータ一覧"
-    static let INTERNATIONALTITLE = "国際ニュース"
-    static let ECONOMYTITLE = "経済ニュース"
-    static let ATNDBEATTITLE = "アテンドリサーチ"
+    static let TECH_TITLE = "IT 科学ニュース"
+    static let QIITA_TITLE = "キータ一覧"
+    static let INTERNATIONAL_TITLE = "国際ニュース"
+    static let ECONOMY_TITLE = "経済ニュース"
+    static let ATNDBEAT_TITLE = "アテンドリサーチ"
     
-    static let ASSIGNFORMAT = "&format=json"
+    static let ASSIGN_FORMAT = "&format=json"
 }

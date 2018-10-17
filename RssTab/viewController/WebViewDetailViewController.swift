@@ -13,7 +13,7 @@ protocol FavProtocol {
     func addFavCell(titleCell: String, webURL: URL)
 }
 
-class WebViewDetailViewController: UIViewController ,WKUIDelegate, WKNavigationDelegate {
+class WebViewDetailViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
 
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var goBackButton: UIBarButtonItem!
@@ -21,7 +21,7 @@ class WebViewDetailViewController: UIViewController ,WKUIDelegate, WKNavigationD
     var webURL: URL?
     var barTitle: String?
     var webViewDelegate: FavProtocol?
-    var errorPage = URL(string: Const.ERRORPAGE)
+    var errorPage = URL(string: Const.ERROR_PAGE)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,11 +30,10 @@ class WebViewDetailViewController: UIViewController ,WKUIDelegate, WKNavigationD
         title.textColor = UIColor.gray
         title.text = barTitle
         navigationItem.titleView = title
-        LoadWebView()
-        
+        loadWebView()
     }
     
-    private func LoadWebView() {
+    private func loadWebView() {
         // errorPageは定数のためnil無し
         let urlRequest = URLRequest(url: webURL ?? errorPage!)
         webView.load(urlRequest)
@@ -60,8 +59,9 @@ class WebViewDetailViewController: UIViewController ,WKUIDelegate, WKNavigationD
     // safariに飛ぶボタンの設定
     @IBAction func goSafariButton(_ sender: Any) {
         // その時開いているURLを取得
-        let nowWebViewURL = webView.url
-        UIApplication.shared.open(nowWebViewURL!, options: [:], completionHandler: nil)
+        if let nowWebViewURL = webView.url {
+            UIApplication.shared.open(nowWebViewURL, options: [:], completionHandler: nil)
+        }
     }
     
     // お気に入りを追加
@@ -90,8 +90,8 @@ class WebViewDetailViewController: UIViewController ,WKUIDelegate, WKNavigationD
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
         // ボタンの有効性をチェック
-        self.goBackButton.isEnabled = self.webView.canGoBack
-        self.goForwardButton.isEnabled = self.webView.canGoForward
+        goBackButton.isEnabled = webView.canGoBack
+        goForwardButton.isEnabled = webView.canGoForward
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
@@ -99,8 +99,8 @@ class WebViewDetailViewController: UIViewController ,WKUIDelegate, WKNavigationD
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
         
         // ボタンの有効性をチェック
-        self.goBackButton.isEnabled = self.webView.canGoBack
-        self.goForwardButton.isEnabled = self.webView.canGoForward
+        goBackButton.isEnabled = webView.canGoBack
+        goForwardButton.isEnabled = webView.canGoForward
         
     }
 }

@@ -107,7 +107,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, TableProtocol
         readJson.isSearchFlag = true
         jsonsLink = readJson
         let encodedString : String = searchWord!.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
-        jsonsLink?.loadAPI(link: Const.ATNDBASELINK + encodedString + Const.ASSIGNFORMAT)
+        jsonsLink?.loadAPI(link: Const.ATND_BASE_LINK + encodedString + Const.ASSIGN_FORMAT)
         tableView.reloadData()
         view.endEditing(true)
     }

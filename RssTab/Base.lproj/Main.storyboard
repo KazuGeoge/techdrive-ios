@@ -40,7 +40,8 @@
                                 </constraints>
                                 <items>
                                     <barButtonItem width="20" style="plain" systemItem="fixedSpace" id="exE-oo-XCT"/>
-                                    <barButtonItem tag="1" image="backImage" id="9Zh-ew-Pnp">
+                                    <barButtonItem tag="1" image="backImage" width="20" id="9Zh-ew-Pnp">
+                                        <inset key="largeContentSizeImageInsets" minX="0.0" minY="-1" maxX="0.0" maxY="1"/>
                                         <connections>
                                             <action selector="actGoBack:" destination="XzX-dQ-exl" id="Zov-Nu-ic6"/>
                                         </connections>
@@ -147,6 +148,33 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OLK-gW-npY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-836" y="506.89655172413796"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="KLN-PC-pMh">
+            <objects>
+                <viewController storyboardIdentifier="error" id="YRP-fK-21S" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bJQ-ve-vRz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ページを開けません" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c0u-A5-rcr">
+                                <rect key="frame" x="109.5" y="323.5" width="156" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="c0u-A5-rcr" firstAttribute="centerY" secondItem="bJQ-ve-vRz" secondAttribute="centerY" id="bPF-7K-S0Z"/>
+                            <constraint firstItem="c0u-A5-rcr" firstAttribute="centerX" secondItem="bJQ-ve-vRz" secondAttribute="centerX" id="lJj-Hh-5jV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="QXR-GW-Ad6"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TjB-lB-dxb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="21.600000000000001" y="506.89655172413796"/>
         </scene>
         <!--Article View Controller-->
         <scene sceneID="G6g-Tm-Xp3">
