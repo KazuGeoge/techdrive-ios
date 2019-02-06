@@ -5,4 +5,6 @@ use_frameworks!
 target 'RssTab' do
   pod 'Alamofire', '~> 4.5'
   pod 'SwiftyJSON'
+  pod 'SDWebImage/GIF', '~> 4.0'
+
 end

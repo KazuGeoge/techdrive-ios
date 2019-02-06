@@ -8,17 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		8A78D7BB15B0CC3977B2AF1D /* Pods_RssTab.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BA70C910A188D2BB342FB7 /* Pods_RssTab.framework */; };
-		AF25E912214A470E004008EF /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF25E911214A470E004008EF /* Content.swift */; };
+		AF098E48215D00E400ECD202 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF098E47215D00E400ECD202 /* ArticleViewController.swift */; };
+		AF098E4A215DD32D00ECD202 /* ReadJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF098E49215DD32D00ECD202 /* ReadJson.swift */; };
+		AF098E4C215E32CF00ECD202 /* QiitaArticleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF098E4B215E32CE00ECD202 /* QiitaArticleCollectionViewController.swift */; };
 		AF25E914214A4E3D004008EF /* BaseContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF25E913214A4E3D004008EF /* BaseContent.swift */; };
+		AF25E91B214E65D4004008EF /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF25E91A214E65D4004008EF /* Const.swift */; };
+		AF25E966214F99AD004008EF /* TableViewDataSouce.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF25E964214F99AD004008EF /* TableViewDataSouce.swift */; };
+		AF270613215903DE00017915 /* ReadXML.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF270612215903DE00017915 /* ReadXML.swift */; };
+		AF87FA46216C917B003A82AD /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF87FA45216C917B003A82AD /* ListCell.swift */; };
 		AFA010902147C6EE005F298B /* TabsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA0108F2147C6EE005F298B /* TabsViewController.swift */; };
-		AFA010922147C70A005F298B /* Page1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA010912147C709005F298B /* Page1ViewController.swift */; };
-		AFA010942147C718005F298B /* Page2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA010932147C718005F298B /* Page2ViewController.swift */; };
-		AFA010962147FDD4005F298B /* Page3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA010952147FDD4005F298B /* Page3ViewController.swift */; };
-		AFA010982147FDDF005F298B /* Page4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA010972147FDDF005F298B /* Page4ViewController.swift */; };
-		AFA0109A2147FDEC005F298B /* Page5ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA010992147FDEC005F298B /* Page5ViewController.swift */; };
-		AFA0109C2147FDFA005F298B /* Page6ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA0109B2147FDFA005F298B /* Page6ViewController.swift */; };
 		AFA0109E2148005F005F298B /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA0109D2148005E005F298B /* FeedItem.swift */; };
 		AFA010A02148EAC4005F298B /* WebViewDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA0109F2148EAC4005F298B /* WebViewDetailViewController.swift */; };
+		AFADCCCE215B8F7E008B0FF2 /* CollectionViewDataSouce.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFADCCCD215B8F7E008B0FF2 /* CollectionViewDataSouce.swift */; };
+		AFAE94D7216219510042C31E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAE94D6216219500042C31E /* SearchViewController.swift */; };
 		AFD10F90214796660053D001 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD10F8F214796660053D001 /* AppDelegate.swift */; };
 		AFD10F95214796660053D001 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFD10F93214796660053D001 /* Main.storyboard */; };
 		AFD10F97214796670053D001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFD10F96214796670053D001 /* Assets.xcassets */; };
@@ -46,17 +48,19 @@
 
 /* Begin PBXFileReference section */
 		6EFC647ACB69E07DDB5C7D82 /* Pods-RssTab.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RssTab.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RssTab/Pods-RssTab.debug.xcconfig"; sourceTree = "<group>"; };
-		AF25E911214A470E004008EF /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
+		AF098E47215D00E400ECD202 /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
+		AF098E49215DD32D00ECD202 /* ReadJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadJson.swift; sourceTree = "<group>"; };
+		AF098E4B215E32CE00ECD202 /* QiitaArticleCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiitaArticleCollectionViewController.swift; sourceTree = "<group>"; };
 		AF25E913214A4E3D004008EF /* BaseContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseContent.swift; sourceTree = "<group>"; };
+		AF25E91A214E65D4004008EF /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		AF25E964214F99AD004008EF /* TableViewDataSouce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSouce.swift; sourceTree = "<group>"; };
+		AF270612215903DE00017915 /* ReadXML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadXML.swift; sourceTree = "<group>"; };
+		AF87FA45216C917B003A82AD /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
 		AFA0108F2147C6EE005F298B /* TabsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsViewController.swift; sourceTree = "<group>"; };
-		AFA010912147C709005F298B /* Page1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page1ViewController.swift; sourceTree = "<group>"; };
-		AFA010932147C718005F298B /* Page2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page2ViewController.swift; sourceTree = "<group>"; };
-		AFA010952147FDD4005F298B /* Page3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page3ViewController.swift; sourceTree = "<group>"; };
-		AFA010972147FDDF005F298B /* Page4ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page4ViewController.swift; sourceTree = "<group>"; };
-		AFA010992147FDEC005F298B /* Page5ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page5ViewController.swift; sourceTree = "<group>"; };
-		AFA0109B2147FDFA005F298B /* Page6ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page6ViewController.swift; sourceTree = "<group>"; };
 		AFA0109D2148005E005F298B /* FeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItem.swift; sourceTree = "<group>"; };
 		AFA0109F2148EAC4005F298B /* WebViewDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewDetailViewController.swift; sourceTree = "<group>"; };
+		AFADCCCD215B8F7E008B0FF2 /* CollectionViewDataSouce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSouce.swift; sourceTree = "<group>"; };
+		AFAE94D6216219500042C31E /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		AFD10F8C214796660053D001 /* RssTab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RssTab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFD10F8F214796660053D001 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFD10F94214796660053D001 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -116,12 +120,22 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		AF098E4D215E32E400ECD202 /* Not Use */ = {
+			isa = PBXGroup;
+			children = (
+				AF098E4B215E32CE00ECD202 /* QiitaArticleCollectionViewController.swift */,
+				AFADCCCD215B8F7E008B0FF2 /* CollectionViewDataSouce.swift */,
+			);
+			path = "Not Use";
+			sourceTree = "<group>";
+		};
 		AF25E915214A5B78004008EF /* model */ = {
 			isa = PBXGroup;
 			children = (
 				AFA0109D2148005E005F298B /* FeedItem.swift */,
 				AF25E913214A4E3D004008EF /* BaseContent.swift */,
-				AF25E911214A470E004008EF /* Content.swift */,
+				AF25E91A214E65D4004008EF /* Const.swift */,
+				AF098E4D215E32E400ECD202 /* Not Use */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -130,15 +144,31 @@
 			isa = PBXGroup;
 			children = (
 				AFA0108F2147C6EE005F298B /* TabsViewController.swift */,
-				AFA010912147C709005F298B /* Page1ViewController.swift */,
-				AFA010932147C718005F298B /* Page2ViewController.swift */,
-				AFA010952147FDD4005F298B /* Page3ViewController.swift */,
-				AFA010972147FDDF005F298B /* Page4ViewController.swift */,
-				AFA010992147FDEC005F298B /* Page5ViewController.swift */,
-				AFA0109B2147FDFA005F298B /* Page6ViewController.swift */,
+				AF098E47215D00E400ECD202 /* ArticleViewController.swift */,
+				AFAE94D6216219500042C31E /* SearchViewController.swift */,
 				AFA0109F2148EAC4005F298B /* WebViewDetailViewController.swift */,
+				AF25E917214E3DD1004008EF /* Views */,
 			);
 			path = viewController;
+			sourceTree = "<group>";
+		};
+		AF25E917214E3DD1004008EF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AF270612215903DE00017915 /* ReadXML.swift */,
+				AF098E49215DD32D00ECD202 /* ReadJson.swift */,
+				AF25E964214F99AD004008EF /* TableViewDataSouce.swift */,
+				AF87FA44216C910B003A82AD /* cells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AF87FA44216C910B003A82AD /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				AF87FA45216C917B003A82AD /* ListCell.swift */,
+			);
+			path = cells;
 			sourceTree = "<group>";
 		};
 		AFD10F83214796660053D001 = {
@@ -265,13 +295,16 @@
 				TargetAttributes = {
 					AFD10F8B214796660053D001 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 					};
 					AFD10F9F214796670053D001 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 						TestTargetID = AFD10F8B214796660053D001;
 					};
 					AFD10FAA214796670053D001 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 						TestTargetID = AFD10F8B214796660053D001;
 					};
 				};
@@ -350,11 +383,15 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-RssTab/Pods-RssTab-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLAnimatedImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -369,18 +406,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFA0109C2147FDFA005F298B /* Page6ViewController.swift in Sources */,
-				AFA010942147C718005F298B /* Page2ViewController.swift in Sources */,
-				AFA010982147FDDF005F298B /* Page4ViewController.swift in Sources */,
-				AF25E912214A470E004008EF /* Content.swift in Sources */,
+				AF25E966214F99AD004008EF /* TableViewDataSouce.swift in Sources */,
 				AFA010A02148EAC4005F298B /* WebViewDetailViewController.swift in Sources */,
-				AFA010962147FDD4005F298B /* Page3ViewController.swift in Sources */,
-				AFA010922147C70A005F298B /* Page1ViewController.swift in Sources */,
-				AFA0109A2147FDEC005F298B /* Page5ViewController.swift in Sources */,
 				AFD10F90214796660053D001 /* AppDelegate.swift in Sources */,
+				AF87FA46216C917B003A82AD /* ListCell.swift in Sources */,
+				AF098E48215D00E400ECD202 /* ArticleViewController.swift in Sources */,
+				AF098E4C215E32CF00ECD202 /* QiitaArticleCollectionViewController.swift in Sources */,
 				AFA0109E2148005F005F298B /* FeedItem.swift in Sources */,
 				AF25E914214A4E3D004008EF /* BaseContent.swift in Sources */,
+				AF270613215903DE00017915 /* ReadXML.swift in Sources */,
+				AFAE94D7216219510042C31E /* SearchViewController.swift in Sources */,
+				AFADCCCE215B8F7E008B0FF2 /* CollectionViewDataSouce.swift in Sources */,
 				AFA010902147C6EE005F298B /* TabsViewController.swift in Sources */,
+				AF25E91B214E65D4004008EF /* Const.swift in Sources */,
+				AF098E4A215DD32D00ECD202 /* ReadJson.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,7 +525,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -540,7 +579,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -563,7 +602,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Geoge.RssTab;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -582,7 +621,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Geoge.RssTab;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -601,7 +640,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Geoge.RssTabTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RssTab.app/RssTab";
 			};
@@ -621,7 +660,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Geoge.RssTabTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RssTab.app/RssTab";
 			};
@@ -640,7 +679,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Geoge.RssTabUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = RssTab;
 			};
@@ -659,7 +698,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Geoge.RssTabUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = RssTab;
 			};
@@ -675,7 +714,7 @@
 				AFD10FB3214796670053D001 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		AFD10FB4214796670053D001 /* Build configuration list for PBXNativeTarget "RssTab" */ = {
 			isa = XCConfigurationList;
@@ -684,7 +723,7 @@
 				AFD10FB6214796670053D001 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		AFD10FB7214796670053D001 /* Build configuration list for PBXNativeTarget "RssTabTests" */ = {
 			isa = XCConfigurationList;
@@ -693,7 +732,7 @@
 				AFD10FB9214796670053D001 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		AFD10FBA214796670053D001 /* Build configuration list for PBXNativeTarget "RssTabUITests" */ = {
 			isa = XCConfigurationList;
@@ -702,7 +741,7 @@
 				AFD10FBC214796670053D001 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

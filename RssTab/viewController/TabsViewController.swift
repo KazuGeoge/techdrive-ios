@@ -10,26 +10,71 @@ import UIKit
 
 class TabsViewController: UITabBarController {
     
+    let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+    var viewControlleras: [UIViewController] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // ViewControllerをインスタンス化
-        let firstVC = Page1ViewController()
-        let secondVC = Page2ViewController()
-        let thirdVC = Page3ViewController()
-        let forceVC = Page4ViewController()
-        let fifthVC = Page5ViewController()
-        let sixVC = Page6ViewController()
-        
-        //タイトルを設定
-        firstVC.tabBarItem.title = "IT 科学ニュース"
-        secondVC.tabBarItem.title = "キータ一覧"
-        thirdVC.tabBarItem.title = "国際ニュース"
-        forceVC.tabBarItem.title = "経済"
-        fifthVC.tabBarItem.title = "エンタメニュース"
-        sixVC.tabBarItem.title = "スポーツニュース"
-        let viewControllers = [firstVC, secondVC, thirdVC, forceVC, fifthVC, sixVC]
+        //各ViewControllerを配列にセット
+        viewControlleras.append(ArticleView.yahooTech.instantiateViewController(storyboard: mainStoryboard))
+        viewControlleras.append(ArticleView.qiita.instantiateViewController(storyboard: mainStoryboard))
+        viewControlleras.append(ArticleView.yahooInterNational.instantiateViewController(storyboard: mainStoryboard))
+        viewControlleras.append(ArticleView.yahooEconomy.instantiateViewController(storyboard: mainStoryboard))
+        viewControlleras.append(ArticleView.searchVC.instantiateViewController(storyboard: mainStoryboard))
         // ページをセット
-        self.setViewControllers(viewControllers, animated: false)
+        setViewControllers(viewControlleras, animated: false)
+    }
+    
+    // 各ViewControllerの内容を列挙
+    enum ArticleView {
+        case yahooTech
+        case qiita
+        case yahooInterNational
+        case yahooEconomy
+        case searchVC
+        
+        func instantiateViewController(storyboard: UIStoryboard) -> UIViewController {
+            let errorPage = storyboard.instantiateViewController(withIdentifier: "error")
+            if let articleView = storyboard.instantiateViewController(withIdentifier: "ArticleView") as? ArticleViewController {
+
+                switch self {
+                    
+                //記事のViewControllerをインスタンス化
+                case .yahooTech:
+                    articleView.sectionTitles = [Const.TECH_TITLE]
+                    articleView.tabBarItem.title = Const.TECH_TITLE
+                    articleView.feedURL = URL(string: Const.TECH)
+                    return articleView
+                    
+                case .qiita:
+                    articleView.sectionTitles = [Const.QIITA_TITLE]
+                    articleView.tabBarItem.title = Const.QIITA_TITLE
+                    articleView.feedLink = Const.QIITA
+                    articleView.isJson = true
+                    return articleView
+                    
+                case .yahooInterNational:
+                    articleView.sectionTitles = [Const.INTERNATIONAL_TITLE]
+                    articleView.tabBarItem.title = Const.INTERNATIONAL_TITLE
+                    articleView.feedURL = URL(string: Const.INTERNATIONAL)
+                    return articleView
+                    
+                case .yahooEconomy:
+                    articleView.sectionTitles = [Const.ECONOMY_TITLE]
+                    articleView.tabBarItem.title = Const.ECONOMY_TITLE
+                    articleView.feedURL = URL(string: Const.ECONOMY)
+                    return articleView
+                    
+                // 検索のViewControllerをインスタンス化
+                case .searchVC:
+                    if let searchVC = storyboard.instantiateViewController(withIdentifier: "SearchView") as? SearchViewController {
+                        searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
+                        return searchVC
+                    }
+                }
+            }
+            return errorPage
+        }
     }
 }
